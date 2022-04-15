@@ -198,6 +198,22 @@
     "psr/log": {
         "version": "1.1.4"
     },
+    "scheb/2fa-bundle": {
+        "version": "5.13",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "5.0",
+            "ref": "0a83961ef50ff91812b229a6f0caf28431d94aec"
+        },
+        "files": [
+            "./config/packages/scheb_2fa.yaml",
+            "./config/routes/scheb_2fa.yaml"
+        ]
+    },
+    "scheb/2fa-email": {
+        "version": "v5.13.1"
+    },
     "sebastian/cli-parser": {
         "version": "1.0.1"
     },
@@ -616,6 +632,9 @@
     },
     "symfony/yaml": {
         "version": "v5.4.3"
+    },
+    "symfonycasts/verify-email-bundle": {
+        "version": "v1.10.0"
     },
     "theseer/tokenizer": {
         "version": "1.2.1"
