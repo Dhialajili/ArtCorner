@@ -49,6 +49,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $joinedAt;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Artist::class, inversedBy="user", cascade={"persist", "remove"})
+     */
+    private $artistProfile;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -153,6 +158,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getJoinedAt(): ?\DateTimeInterface
     {
         return $this->joinedAt;
+    }
+
+    public function getArtistProfile(): ?Artist
+    {
+        return $this->artistProfile;
+    }
+
+    public function setArtistProfile(?Artist $artistProfile): self
+    {
+        $this->artistProfile = $artistProfile;
+
+        return $this;
     }
 
    
