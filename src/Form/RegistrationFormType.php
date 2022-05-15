@@ -55,6 +55,7 @@ class RegistrationFormType extends AbstractType
                   'Collector' => 'ROLE_COLLECTOR',
                   'Amateur' => 'ROLE_AMATEUR',
                   
+                  
                 ],
             ])
         ;
