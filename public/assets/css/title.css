@@ -1,0 +1,11 @@
+.title {
+  height: 148px;
+  background-image: linear-gradient(274deg, #e4ebf3 0%, #dae3ec 100%);
+}
+.title h2 {
+  padding-left: 455px;
+  padding-top: 55px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #15212f;
+}

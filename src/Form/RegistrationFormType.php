@@ -54,7 +54,7 @@ class RegistrationFormType extends AbstractType
                   'Professional' => 'ROLE_PROFESSIONAL',
                   'Collector' => 'ROLE_COLLECTOR',
                   'Amateur' => 'ROLE_AMATEUR',
-                  'Admin' => 'ROLE_ADMIN',
+                  
                 ],
             ])
         ;

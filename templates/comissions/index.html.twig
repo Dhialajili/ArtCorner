@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ComissionsController!{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{{asset('assets/css/aboutcomissions.css')}}"/>
+<link rel="stylesheet" href="{{asset('assets/css/title.css')}}"/>
+    <div class="title">
+    <h2>Commandez Une Oeuvre</h2>
+    </div>
+    <div class="about-item">
+        <ul>
+            <li><img src="{{asset('assets/images/About-comissions/image1.jpg')}}" alt=""></li>
+            <li><h5>Aristic Corner comissions</h5>
+            <p>Impossible de trouver la pièce parfaite pour cet espace inconfortable
+                    au dessus de la cheminée ? Vous cherchez un portrait de votre
+                    chien bien-aimé? Ou peut-être qu'une œuvre d'art a déjà attrapé
+                    votre œil, mais ce n'est pas tout à fait la bonne taille ou la bonne couleur.
+
+                    Ne t'inquiète pas. Nous avons ce qu'il vous faut avec le coin artistique
+                    commissions.</p></li>
+        </ul>
+    </div>
+
+     <div class="about-item">
+        <ul>
+            <li><img src="{{asset('assets/images/About-comissions/image2.jpg')}}" alt=""></li>
+            <li><h5>Aristic Corner comissions</h5>
+            <p>Définissez votre budget, décrivez votre œuvre d'art parfaite et fixez une date d'achèvement. L'artiste que vous avez choisi acceptera alors votre offre ou vous contactera via Artfinder Messenger pour discuter plus en détail de vos besoins. Vous pouvez même télécharger des images pour vous inspirer.
+
+Une fois accepté, vous payez l'acompte pour lancer le bal et lorsque vous êtes satisfait de la pièce finale, vous payez le reste.</p></li>
+        </ul>
+    </div>
+
+     <div class="about-item">
+        <ul>
+            <li><img src="{{asset('assets/images/About-comissions/image3.jpg')}}" alt=""></li>
+            <li><h5>Aristic Corner comissions</h5>
+            <p>Une fois votre travail accepté, votre artiste sera avec vous
+à chaque étape via la messagerie ArtisticCorner avec
+photos et mises à jour régulières.</p></li>
+        </ul>
+    </div>
+
+
+{% endblock %}

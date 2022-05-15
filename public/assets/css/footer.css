@@ -1,0 +1,8 @@
+.footer {
+  background-color: #15212f;
+  color: #fff;
+  display: flex;
+  align-items: baseline;
+
+  height: 311px;
+}

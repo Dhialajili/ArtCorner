@@ -1,0 +1,38 @@
+.about-item img {
+  width: 560px;
+  height: 353px;
+}
+.about-item ul {
+  display: flex;
+  align-items: center;
+}
+.about-item p {
+  width: 350px;
+}
+.questions ul {
+  display: flex;
+  align-items: baseline;
+  padding-top: 30px;
+
+  height: 300px;
+}
+.questions {
+  background-color: #f5f4f2;
+
+  height: 506px;
+  margin-top: 60px;
+  color: #15212f;
+}
+.questions h3 {
+  padding-left: 171px;
+  padding-top: 50px;
+  font-weight: bold;
+}
+.right {
+  width: 550px;
+  padding-left: 100px;
+}
+.left {
+  width: 600px;
+  padding-left: 150px;
+}

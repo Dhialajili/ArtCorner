@@ -1,0 +1,16 @@
+.feature {
+  padding-top: 20px;
+  align-items: center;
+  display: flex;
+
+  height: 250px;
+  background-color: white;
+}
+.feature li {
+  padding-left: 35px;
+  color: #15212f;
+}
+.icon img {
+  height: 40px;
+  width: 40px;
+}

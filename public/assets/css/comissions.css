@@ -1,0 +1,45 @@
+.comission {
+  display: flex;
+  width: 1148px;
+  height: 260px;
+  background-color: #fff;
+  margin-left: 109px;
+  margin-top: 40px;
+
+  margin-bottom: 50px;
+  align-items: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.comission h2 {
+  padding-left: 325px;
+  font-weight: bold;
+  font-size: 40px;
+  color: #15212f;
+}
+.comission h5 {
+  text-align: center;
+  width: 628px;
+  font-size: medium;
+  padding-left: 215px;
+  color: #454a52;
+  position: relative;
+  bottom: 20px;
+}
+.comission button {
+  color: #fff;
+  background-color: #0d17d9;
+  border: none;
+  font-weight: bold;
+  font-size: 16px;
+  margin-left: 400px;
+  cursor: pointer;
+  height: 45px;
+  width: 250px;
+  position: relative;
+  bottom: 25px;
+}
+.comission img {
+  padding-left: 155px;
+  padding-top: 155px;
+}

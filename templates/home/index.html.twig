@@ -1,9 +1,97 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Artistic Corner{% endblock %}
 
 {% block body %}
-<h1>HomeController</h1>
+<link rel="stylesheet" href="{{asset('assets/css/hero.css')}}"/>
+<link rel="stylesheet" href="{{asset('assets/css/feature.css')}}"/>
+<link rel="stylesheet" href="{{asset('assets/css/comissions.css')}}"/>
+<div class="hero">
+          <ul >
+            <li>
+              <h1>Portraits parfaits</h1>
+            </li>
+            <li>
+              <p>
+                Qu'y a-t-il dans un visage ? Choisissez parmi le meilleur du
+                portrait.
+              </p>
+            </li>
+            <li>
+              <a href="#">
+                <button>Achetez</button>
+              </a>
+            </li>
+          </ul>
+          <img src="{{asset('assets/images/HomeSlide1.jpg')}}" alt="">
+        </div>
 
+        <div class="feature">
+      <ul>
+        <li class="icon">
+          <img src="{{asset('assets/images/Icons/image.svg')}}" alt="">
+        </li>
+        <li>
+          <p>Art authentique et artisanal</p>
+        </li>
+        <li>
+          <p>
+            Achetez des œuvres d'art originales, uniques et abordables de
+            milliers d'artistes autour du monde.
+          </p>
+        </li>
+      </ul>
+      <ul>
+        <li class="icon">
+          <img src="{{asset('assets/images/Icons/person.svg')}}" alt="">
+        </li>
+        <li>
+          <p>Soutenez les artistes indépendants</p>
+        </li>
+        <li>
+          <p>
+            Achetez directement auprès d'un artiste, en l'aidant à gagnent leur
+            vie en faisant ce qu'ils aiment.
+          </p>
+        </li>
+      </ul>
+      <ul>
+        <li class="icon">
+          <img src="{{asset('assets/images/Icons/shipping.svg')}}" alt="">
+        </li>
+        <li>
+          <p>Achats sans risque</p>
+        </li>
+        <li>
+          <p>
+            Transactions sécurisées, retours gratuits sous 14 jours. Complet
+            tranquillité d'esprit garantie.
+          </p>
+        </li>
+      </ul>
+    </div>
+
+        <div class="comission">
+      <ul>
+        <li>
+          <h2>Commandez un artiste.</h2>
+        </li>
+        <li>
+          <h5>
+            Vous ne trouvez pas la pièce parfaite ? Ou à la recherche d'une
+            famille ou d'un animal de compagnie portrait? Commandez un artiste
+            et faites de votre rêve une réalité.
+          </h5>
+        </li>
+        <li>
+          <a href="{{path('app_comissions')}}">
+            <button>Plus d'Informations</button>
+          <a/>
+        </li>
+      </ul>
+      <img src="{{asset('assets/images/Shape.svg')}}" alt="">
+    </div>
+
+     
 
 {% endblock %}
