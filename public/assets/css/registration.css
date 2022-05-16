@@ -5,13 +5,13 @@ body {
   margin-top: 50px;
   margin-left: 200px;
   width: 900px;
-  background-color: #f5f4f2;
+
   color: #15212f;
 }
 .registration img {
   width: 500px;
   height: 550px;
-  padding-left: -100px;
+  padding-left: -50px;
 }
 .registration ul {
   align-items: center;
@@ -21,13 +21,15 @@ body {
   list-style: none;
 }
 .form {
-  margin-left: 50px;
+  padding-left: 50px;
+  background-color: #f5f4f2;
+  height: 550px;
 }
 .btn {
   color: #fff;
   background-color: #0d17d9;
   border: none;
-  width: 250px;
+  width: 265px;
   height: 40px;
   font-weight: bold;
   margin-top: 10px;
@@ -58,4 +60,15 @@ select {
   border-radius: 4px;
   background-color: #ffffff;
   margin-bottom: 5px;
+}
+a:hover {
+  color: #0d17d9;
+  cursor: pointer;
+}
+a {
+  color: #15212f;
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 50px;
+  padding-left: 35px;
 }

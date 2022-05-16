@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="{{asset('assets/css/registration.css')}}"/>
 <div class="registration">
 <ul>
-   <li> <img src="{{asset('assets/images/registration.jpg')}}" alt=""></li>
+    <img src="{{asset('assets/images/registration.jpg')}}" alt="">
 
        <li class="form"> <h2>Bonjour</h2>
             <h2>les amateurs d'art</h2>
@@ -24,8 +24,9 @@
         {{form_row(registrationForm.Roles)}}
         {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}</li>
+        <button type="submit" class="btn">S'inscrire</button>
+    {{ form_end(registrationForm) }}
+        <a href="{{path('app_login')}}">Vous avez déjà un compte ?</a></li>
     </ul>
 </div>
 {% endblock %}
