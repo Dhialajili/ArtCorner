@@ -35,8 +35,8 @@
                 <td>{{ artist.profilePicture }}</td>
                 <td>{{ artist.coverPicture }}</td>
                 <td>
-                    <a href="{{ path('app_artist_profile_show', {'id': artist.id}) }}">show</a>
-                    <a href="{{ path('app_artist_profile_edit', {'id': artist.id}) }}">edit</a>
+                    <a href="{{ path('app_artist_profile_show', {'username': artist.username}) }}">show</a>
+                    <a href="{{ path('app_artist_profile_edit', {'username': artist.username}) }}">edit</a>
                 </td>
             </tr>
         {% else %}

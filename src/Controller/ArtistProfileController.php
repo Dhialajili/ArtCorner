@@ -48,7 +48,7 @@ class ArtistProfileController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="app_artist_profile_show", methods={"GET"})
+     * @Route("/{username}", name="app_artist_profile_show", methods={"GET"})
      */
     public function show(Artist $artist): Response
     {
@@ -58,7 +58,7 @@ class ArtistProfileController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="app_artist_profile_edit", methods={"GET", "POST"})
+     * @Route("/{username}/edit", name="app_artist_profile_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Artist $artist, ArtistRepository $artistRepository): Response
     {

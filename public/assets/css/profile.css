@@ -1,0 +1,14 @@
+.background {
+  background-color: #f5f4f2;
+}
+.photo {
+  vertical-align: middle;
+  width: 135px;
+  height: 135px;
+  border-radius: 50%;
+}
+
+.about {
+  align-items: baseline;
+  display: flex;
+}
