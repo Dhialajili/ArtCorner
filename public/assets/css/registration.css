@@ -1,0 +1,61 @@
+body {
+  background-color: #979ba0;
+}
+.registration {
+  margin-top: 50px;
+  margin-left: 200px;
+  width: 900px;
+  background-color: #f5f4f2;
+  color: #15212f;
+}
+.registration img {
+  width: 500px;
+  height: 550px;
+  padding-left: -100px;
+}
+.registration ul {
+  align-items: center;
+  display: flex;
+}
+.registration li {
+  list-style: none;
+}
+.form {
+  margin-left: 50px;
+}
+.btn {
+  color: #fff;
+  background-color: #0d17d9;
+  border: none;
+  width: 250px;
+  height: 40px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+input[type="text"] {
+  width: 90%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+input[type="text"]:focus {
+  background-color: lightblue;
+}
+input[type="password"] {
+  width: 90%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+input[type="password"]:focus {
+  background-color: lightblue;
+}
+select {
+  width: 90%;
+
+  padding: 16px 25px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: #ffffff;
+  margin-bottom: 5px;
+}

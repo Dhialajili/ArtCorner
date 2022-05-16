@@ -1,9 +1,13 @@
 
 
-{% block title %}Log in!{% endblock %}
+
 
 {% block body %}
-<form method="post">
+<link rel="stylesheet" href="{{asset('assets/css/login.css')}}"/>
+<div class="login">
+<ul>
+<img src="{{asset('assets/images/login.jpg')}}" alt="">
+<li><form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
@@ -14,7 +18,7 @@
         </div>
     {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <h1 class="h3 mb-3 font-weight-normal">Connectez-vous à votre compte</h1>
     <label for="inputEmail">Email</label>
     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus><br>
     <label for="inputPassword">Password</label>
@@ -37,5 +41,8 @@
         Sign in
     </button>
 </form>
-    <a href="{{path('app_forgot_password_request')}}">mot de passe oublié ?</a>
+    <a href="{{path('app_forgot_password_request')}}" class="reset">mot de passe oublié ?</a><br>
+    <div class="join"><h4 >Vous n'avez pas de compte ?<a href="{{path('app_register')}}">S'inscrire</a><h4></div></li>
+</ul>
+</div>
 {% endblock %}

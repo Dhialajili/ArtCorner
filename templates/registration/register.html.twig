@@ -1,15 +1,21 @@
 
 
-{% block title %}Register{% endblock %}
+
 
 {% block body %}
     {% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
 
-    <h1>Hello</h1>
-    <h1>art</h1>
-    <h1>lovers</h1>
+<link rel="stylesheet" href="{{asset('assets/css/registration.css')}}"/>
+<div class="registration">
+<ul>
+   <li> <img src="{{asset('assets/images/registration.jpg')}}" alt=""></li>
+
+       <li class="form"> <h2>Bonjour</h2>
+            <h2>les amateurs d'art</h2>
+        
+    
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.email) }}
         {{ form_row(registrationForm.plainPassword, {
@@ -19,5 +25,7 @@
         {{ form_row(registrationForm.agreeTerms) }}
 
         <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+    {{ form_end(registrationForm) }}</li>
+    </ul>
+</div>
 {% endblock %}
