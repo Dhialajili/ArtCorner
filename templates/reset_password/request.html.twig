@@ -3,19 +3,25 @@
 
 
 {% block body %}
+<link rel="stylesheet" href="{{asset('assets/css/request.css')}}"/>
+<div >
     {% for flash_error in app.flashes('reset_password_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
-    <h1>Réinitialisez votre mot de passe</h1>
+    
+    <ul class="request">
+        <li><h1>Réinitialisez votre mot de passe</h1></li>
 
-    {{ form_start(requestForm) }}
-        {{ form_row(requestForm.email) }}
-        <div>
+     <li>{{ form_start(requestForm) }}
+        {{ form_row(requestForm.email) }}</li>
+        <li>
             <h4>
-                Entrez votre adresse e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.
+                Entrez votre adresse e-mail et nous vous enverrons<br> un lien pour réinitialiser votre mot de passe.
             </h4>
-        </div>
+        </li>
 
         <button class="btn btn-primary">Réinitialiser le mot de passe</button>
-    {{ form_end(requestForm) }}
+        {{ form_end(requestForm) }}
+        <ul>
+    </div>
 {% endblock %}
