@@ -4,9 +4,12 @@ namespace App\Entity;
 
 use App\Repository\ArtistRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * @ORM\Entity(repositoryClass=ArtistRepository::class)
+ * @Vich\Uploadable
  */
 class Artist
 {
@@ -61,6 +64,19 @@ class Artist
      * @ORM\Column(type="string", length=255)
      */
     private $profilePicture;
+
+     /**
+     * @Vich\UploadableField(mapping="profile_images", fileNameProperty="profilePicture")
+     * @var File|null
+     */
+    private $profileimageFile;
+
+     /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTimeInterface|null
+     */
+    private $updatedAt;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -190,6 +206,23 @@ class Artist
         return $this;
     }
 
+    public function setProfileimageFile(File $profileimageFile = null) : void
+    {
+        $this->profileimageFile = $profileimageFile;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if (null !== $profileimageFile) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTimeImmutable('');
+        }
+    }
+
+    public function getProfileimageFile()
+    {
+        return $this->profileimageFile;
+    }
     public function getCoverPicture(): ?string
     {
         return $this->coverPicture;

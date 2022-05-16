@@ -89,7 +89,7 @@ class RegistrationController extends AbstractController
         // @TODO Change the redirect on success and handle or remove the flash message in your templates
         $this->addFlash('success', 'Your email address has been verified.');
         if ( in_array( 'ROLE_ARTIST', $this->getUser()->getRoles(), true) )
-        return $this->redirectToRoute('app_artist_profile');
+        return $this->redirectToRoute('app_artist_profile_new');
         if ( in_array( 'ROLE_COLLECTOR', $this->getUser()->getRoles(), true) )
         return $this->redirectToRoute('app_home');
     }

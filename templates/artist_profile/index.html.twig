@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Artist index{% endblock %}
+
+{% block body %}
+    <h1>Artist index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Bio</th>
+                <th>Facebook</th>
+                <th>Instagram</th>
+                <th>Twitter</th>
+                <th>BirthDate</th>
+                <th>WorkStatus</th>
+                <th>ProfilePicture</th>
+                <th>CoverPicture</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for artist in artists %}
+            <tr>
+                <td>{{ artist.id }}</td>
+                <td>{{ artist.username }}</td>
+                <td>{{ artist.Bio }}</td>
+                <td>{{ artist.facebook }}</td>
+                <td>{{ artist.instagram }}</td>
+                <td>{{ artist.twitter }}</td>
+                <td>{{ artist.birthDate ? artist.birthDate|date('Y-m-d') : '' }}</td>
+                <td>{{ artist.workStatus }}</td>
+                <td>{{ artist.profilePicture }}</td>
+                <td>{{ artist.coverPicture }}</td>
+                <td>
+                    <a href="{{ path('app_artist_profile_show', {'id': artist.id}) }}">show</a>
+                    <a href="{{ path('app_artist_profile_edit', {'id': artist.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_artist_profile_new') }}">Create new</a>
+{% endblock %}

@@ -26,7 +26,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('ArtisticCorner AdminDashbord');
+            ->setTitle("Interface d'administration");
     }
 
     public function configureMenuItems(): iterable

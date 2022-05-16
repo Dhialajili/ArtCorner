@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Artist{% endblock %}
+
+{% block body %}
+
+    <h1>Artist</h1>
+    <img src="/uploads/profiles/{{artist.profilePicture}} " alt="">
+    <p>Email adress : {{ artist.user }}</p>
+    <p>name : {{ artist.username }}
+    <p>Bio : {{artist.Bio}}
+    <ul>
+        <li><h5>Links</h5>
+        <li><p>facebook : {{artist.facebook}}</p><li>
+        <li><p>instagram : {{artist.instagram}}</p><li>
+        <li><p>twitter : {{artist.twitter}}</p><li>
+    </ul>
+
+
+    <a href="{{ path('app_artist_profile_index') }}">back to list</a>
+
+    <a href="{{ path('app_artist_profile_edit', {'id': artist.id}) }}">edit</a>
+
+    
+{% endblock %}
