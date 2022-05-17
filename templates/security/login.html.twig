@@ -19,9 +19,9 @@
     {% endif %}
 
     <h1 class="h3 mb-3 font-weight-normal">Connectez-vous à votre compte</h1>
-    <label for="inputEmail">Email</label>
+    <label for="inputEmail">E-mail</label>
     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus><br>
-    <label for="inputPassword">Password</label>
+    <label for="inputPassword">Mot de passe</label>
     <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
     <input type="hidden" name="_csrf_token"
@@ -32,13 +32,13 @@
 
         <div class="checkbox mb-3">
             <label>
-                <input type="checkbox" name="_remember_me"> Remember me
+                <input type="checkbox" name="_remember_me"> Souviens-toi de moi
             </label>
         </div>
  
 
     <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
+        S'identifier
     </button>
 </form>
     <a href="{{path('app_forgot_password_request')}}" class="reset">mot de passe oublié ?</a><br>
