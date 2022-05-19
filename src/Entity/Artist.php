@@ -68,6 +68,12 @@ class Artist
      */
     private $profileimageFile;
 
+    /**
+     * @Vich\UploadableField(mapping="profile_images", fileNameProperty="coverPicture")
+     * @var File|null
+     */
+    private $coverimageFile;
+
      /**
      * @ORM\Column(type="datetime")
      *
@@ -195,6 +201,11 @@ class Artist
         return $this;
     }
 
+    public function getProfileimageFile()
+    {
+        return $this->profileimageFile;
+    }
+
     public function setProfileimageFile(File $profileimageFile = null) : void
     {
         $this->profileimageFile = $profileimageFile;
@@ -208,10 +219,25 @@ class Artist
         }
     }
 
-    public function getProfileimageFile()
+    public function getCoverimageFile()
     {
-        return $this->profileimageFile;
+        return $this->coverimageFile;
     }
+
+    public function setCoverimageFile(File $coverimageFile = null) : void
+    {
+        $this->coverimageFile = $coverimageFile;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if (null !== $coverimageFile) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTimeImmutable('');
+        }
+    }
+
+   
     public function getCoverPicture(): ?string
     {
         return $this->coverPicture;

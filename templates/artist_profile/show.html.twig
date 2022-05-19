@@ -6,14 +6,17 @@
 <link rel="stylesheet" href="{{asset('assets/css/profile.css')}}"/>
 <link rel="stylesheet" href="{{asset('assets/css/title.css')}}"/>
 <div>    
-    <ul class="info">
-        <li><img class="photo" src="/uploads/profiles/{{artist.profilePicture}} " alt=""></li>
-        <li><h5>{{ artist.username }}</h5><li>
-        <li><h5>{{ artist.user }}</h5></li>
+    <ul class="heading" >
+        <li class="info">
+            <img class="photo" src="/uploads/profiles/{{artist.profilePicture}} " alt="">
+            <h5>Artiste : {{ artist.username }}</h5>
+            <h5>E-mail: {{ artist.user }}</h5></li>
+      
+        <li>  <img class="cover"src="/uploads/profiles/{{artist.coverPicture}} " alt="">  </li>
 
     </ul>
     <div class="title">
-    <h2>About {{ artist.username }}</h2>
+    <h2>À propos de {{ artist.username }}</h2>
     </div>
     
     

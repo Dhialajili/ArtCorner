@@ -1,10 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Artist index{% endblock %}
+
 
 {% block body %}
-    <h1>Artist index</h1>
-
+<link rel="stylesheet" href="{{asset('assets/css/title.css')}}"/>
+<div class="title">
+    <h2>Artistes indépendants</h2>
+<div>
     <table class="table">
         <thead>
             <tr>
@@ -33,5 +35,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_artist_profile_new') }}">Create new</a>
+   
 {% endblock %}
