@@ -53,12 +53,12 @@ class ProfessionalProfile
      */
     private $updatedAt;
 
+
+
     /**
-     * @ORM\OneToOne(targetEntity=User::class, inversedBy="professionalProfile", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToOne(targetEntity=User::class, mappedBy="professional", cascade={"persist", "remove"})
      */
     private $user;
-
 
 
   
@@ -133,17 +133,7 @@ class ProfessionalProfile
         return $this->profileimageFile;
     }
 
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(User $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
+    
     public function __serialize(): array
     {
         return [
@@ -158,6 +148,30 @@ public function __unserialize(array $serialized): ProfessionalProfile
     $this->id = $serialized['id'];
     
     // .....
+    return $this;
+}
+
+
+
+public function getUser(): ?User
+{
+    return $this->user;
+}
+
+public function setUser(?User $user): self
+{
+    // unset the owning side of the relation if necessary
+    if ($user === null && $this->user !== null) {
+        $this->user->setProfessional(null);
+    }
+
+    // set the owning side of the relation if necessary
+    if ($user !== null && $user->getProfessional() !== $this) {
+        $user->setProfessional($this);
+    }
+
+    $this->user = $user;
+
     return $this;
 }
 

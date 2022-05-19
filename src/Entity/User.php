@@ -50,14 +50,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $joinedAt;
 
     /**
-     * @ORM\OneToOne(targetEntity=Artist::class, inversedBy="user", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Artist::class, inversedBy="user", cascade={"persist", "remove"}, orphanRemoval=true)
      */
-    private $artistProfile;
+    private $artist;
 
     /**
-     * @ORM\OneToOne(targetEntity=ProfessionalProfile::class, mappedBy="user", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=ProfessionalProfile::class, inversedBy="user", cascade={"persist", "remove"}, orphanRemoval=true)
      */
-    private $professionalProfile;
+    private $professional;
+
+  
+
+  
+
+    
+
+   
+
+    
 
     public function getId(): ?int
     {
@@ -182,20 +192,32 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->email;
     }
 
-    public function getProfessionalProfile(): ?ProfessionalProfile
+    public function getArtist(): ?Artist
     {
-        return $this->professionalProfile;
+        return $this->artist;
     }
 
-    public function setProfessionalProfile(ProfessionalProfile $professionalProfile): self
+    public function setArtist(?Artist $artist): self
     {
-        // set the owning side of the relation if necessary
-        if ($professionalProfile->getUser() !== $this) {
-            $professionalProfile->setUser($this);
-        }
-
-        $this->professionalProfile = $professionalProfile;
+        $this->artist = $artist;
 
         return $this;
     }
+
+    public function getProfessional(): ?ProfessionalProfile
+    {
+        return $this->professional;
+    }
+
+    public function setProfessional(?ProfessionalProfile $professional): self
+    {
+        $this->professional = $professional;
+
+        return $this;
+    }
+
+   
+
+    
+
 }
