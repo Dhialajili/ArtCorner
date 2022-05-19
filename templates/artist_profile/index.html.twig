@@ -4,36 +4,25 @@
 
 {% block body %}
 <link rel="stylesheet" href="{{asset('assets/css/title.css')}}"/>
+<link rel="stylesheet" href="{{asset('assets/css/artistList.css')}}"/>
+
 <div class="title">
     <h2>Artistes indépendants</h2>
 <div>
-    <table class="table">
-        <thead>
-            <tr>
-                
-                <th>Username</th>
-                
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for artist in artists %}
-            <tr>
-                
-                <td>{{ artist.username }}</td>
-               
-                <td>
-                    <a href="{{ path('app_artist_profile_show', {'username': artist.username}) }}">show</a>
-                    <a href="{{ path('app_artist_profile_edit', {'username': artist.username}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="11">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+{% for artist in artists %}
+    <div class="grid">
+        <ul class="card">
+            <li><img class="cover"src="/uploads/profiles/{{artist.coverPicture}} " alt=""></li>
+            <li><img class="photo" src="/uploads/profiles/{{artist.profilePicture}} " alt=""></li>
+            <li><h5>{{ artist.username }}<h5></li>
+            <li><a href="{{ path('app_artist_profile_show', {'username': artist.username}) }}"><button>Voir<img class="arrow" src="{{asset('assets/images/Icons/arrow.svg')}}" alt=""></button></a></li>
+        </ul>
+    </div>
+    {% else %}
+         <h1>no records found</h1>
+
+{% endfor %}
+    
 
    
 {% endblock %}
