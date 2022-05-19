@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ProfessionalProfile{% endblock %}
+
+{% block body %}
+    <h1>ProfessionalProfile</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ professional_profile.id }}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ professional_profile.username }}</td>
+            </tr>
+            <tr>
+                <th>WorkEstablishment</th>
+                <td>{{ professional_profile.workEstablishment }}</td>
+            </tr>
+            <tr>
+                <th>BirthDate</th>
+                <td>{{ professional_profile.birthDate ? professional_profile.birthDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>ProfilePicture</th>
+                <td>{{ professional_profile.profilePicture }}</td>
+            </tr>
+           
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_professional_profile_index') }}">back to list</a>
+
+    <a href="{{ path('app_professional_profile_edit', {'username': professional_profile.username}) }}">edit</a>
+
+    
+{% endblock %}

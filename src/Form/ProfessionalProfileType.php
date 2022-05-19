@@ -2,31 +2,20 @@
 
 namespace App\Form;
 
-use App\Entity\Artist;
-
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\ProfessionalProfile;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
 use Vich\UploaderBundle\Form\Type\VichImageType;
-
-
-class ArtistType extends AbstractType
+class ProfessionalProfileType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('username')
-            ->add('Bio')
-            ->add('facebook')
-            ->add('instagram')
-            ->add('twitter')
+            ->add('workEstablishment')
             ->add('birthDate')
-            ->add('workStatus')
-            
             ->add('profileimageFile',VichImageType::class)
-            ->add('coverPicture')
             
         ;
     }
@@ -34,7 +23,7 @@ class ArtistType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Artist::class,
+            'data_class' => ProfessionalProfile::class,
         ]);
     }
 }

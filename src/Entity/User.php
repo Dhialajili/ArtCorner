@@ -54,6 +54,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $artistProfile;
 
+    /**
+     * @ORM\OneToOne(targetEntity=ProfessionalProfile::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $professionalProfile;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -175,5 +180,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __toString()
     {
         return $this->email;
+    }
+
+    public function getProfessionalProfile(): ?ProfessionalProfile
+    {
+        return $this->professionalProfile;
+    }
+
+    public function setProfessionalProfile(ProfessionalProfile $professionalProfile): self
+    {
+        // set the owning side of the relation if necessary
+        if ($professionalProfile->getUser() !== $this) {
+            $professionalProfile->setUser($this);
+        }
+
+        $this->professionalProfile = $professionalProfile;
+
+        return $this;
     }
 }

@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ProfessionalProfile index{% endblock %}
+
+{% block body %}
+    <h1>ProfessionalProfile index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                
+                <th>Username</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+        {% for professional_profile in professional_profiles %}
+            <tr>
+                
+                <td>{{ professional_profile.username }}</td>
+               
+                <td>
+                    <a href="{{ path('app_professional_profile_show', {'username': professional_profile.username}) }}">show</a>
+                    <a href="{{ path('app_professional_profile_edit', {'username': professional_profile.username}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_professional_profile_new') }}">Create new</a>
+{% endblock %}

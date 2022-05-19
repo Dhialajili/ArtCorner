@@ -53,6 +53,16 @@ class ProfessionalProfile
      */
     private $updatedAt;
 
+    /**
+     * @ORM\OneToOne(targetEntity=User::class, inversedBy="professionalProfile", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
+
+
+  
+
     public function getId(): ?int
     {
         return $this->id;
@@ -122,5 +132,37 @@ class ProfessionalProfile
     {
         return $this->profileimageFile;
     }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+    public function __serialize(): array
+    {
+        return [
+            'id' => $this->id,
+            
+            //......
+        ];
+    }
+
+public function __unserialize(array $serialized): ProfessionalProfile
+{
+    $this->id = $serialized['id'];
+    
+    // .....
+    return $this;
+}
+
+   
+
+  
   
 }

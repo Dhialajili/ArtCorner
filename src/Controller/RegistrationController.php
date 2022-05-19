@@ -92,5 +92,9 @@ class RegistrationController extends AbstractController
         return $this->redirectToRoute('app_artist_profile_new');
         if ( in_array( 'ROLE_COLLECTOR', $this->getUser()->getRoles(), true) )
         return $this->redirectToRoute('app_home');
+        if ( in_array('ROLE_PROFESSIONAL', $this->getUser()->getRoles(),true))
+        return $this->redirectToRoute('app_professional_profile_new');
+        if ( in_array('ROLE_AMATEUR', $this->getUser()->getRoles(),true))
+        return $this->redirectToRoute('app_home');
     }
 }
