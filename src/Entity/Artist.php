@@ -234,4 +234,20 @@ class Artist
 
         return $this;
     }
+    public function __serialize(): array
+    {
+        return [
+            'id' => $this->id,
+            
+            //......
+        ];
+    }
+
+public function __unserialize(array $serialized): Artist
+{
+    $this->id = $serialized['id'];
+    
+    // .....
+    return $this;
+}
 }
