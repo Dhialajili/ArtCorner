@@ -16,23 +16,32 @@
 
     </ul>
     <div class="title">
-    <h2>À propos de {{ artist.username }}</h2>
+        <h2>À propos de {{ artist.username }}</h2>
     </div>
-    
-    
-    
+        
     <div class="about">
         <ul class="links">
             <li><h5>Links</h5>
+            {% if artist.facebook is not null %}
             <li><img src="{{asset('assets/images/Icons/facebook.svg')}}" alt=""><a href="{{artist.facebook}}}"target="_blank">Ajoute-moi sur Facebook</a></li>
+            {% endif %}
+            {% if artist.instagram is not null %}
             <li><img src="{{asset('assets/images/Icons/instagram.svg')}}" alt=""><a href="{{artist.instagram}}}"target="_blank">Suivez-moi sur Instagram</a></li>
+            {% endif %}
+            {% if artist.twitter is not null %}
             <li><img src="{{asset('assets/images/Icons/twitter.svg')}}" alt=""><a href="{{artist.twitter}}}"target="_blank">Suivez-moi sur Instagram</a></li>
+            {% endif %}
         </ul>
         <ul class="bio">
             <li><h5>Biographie</h5><li>
             <li><p>{{ artist.Bio }}<p><li>
         </ul>
     </div>
+
+    <div class="title">
+        <h2>Les oeuvres de {{ artist.username }}</h2>
+    </div>
+
 </div>   
 
     
