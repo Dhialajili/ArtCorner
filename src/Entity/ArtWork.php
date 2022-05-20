@@ -69,6 +69,34 @@ class ArtWork
      */
     private $updatedAt;
 
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=3)
+     */
+    private $price;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Artist::class, inversedBy="artwork")
+     */
+    private $artist;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="artWorks")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Subject::class, inversedBy="artWorks")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $subject;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Style::class, inversedBy="artWorks")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $style;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -174,6 +202,66 @@ class ArtWork
     public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updatedAt;
+    }
+
+    public function getPrice(): ?string
+    {
+        return $this->price;
+    }
+
+    public function setPrice(string $price): self
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    public function getArtist(): ?Artist
+    {
+        return $this->artist;
+    }
+
+    public function setArtist(?Artist $artist): self
+    {
+        $this->artist = $artist;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function getSubject(): ?Subject
+    {
+        return $this->subject;
+    }
+
+    public function setSubject(?Subject $subject): self
+    {
+        $this->subject = $subject;
+
+        return $this;
+    }
+
+    public function getStyle(): ?Style
+    {
+        return $this->style;
+    }
+
+    public function setStyle(?Style $style): self
+    {
+        $this->style = $style;
+
+        return $this;
     }
 
    

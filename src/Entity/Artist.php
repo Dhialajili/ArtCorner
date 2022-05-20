@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ArtistRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
@@ -90,6 +92,16 @@ class Artist
      * @ORM\OneToOne(targetEntity=User::class, mappedBy="artist", cascade={"persist", "remove"})
      */
     private $user;
+
+    /**
+     * @ORM\OneToMany(targetEntity=ArtWork::class, mappedBy="artist")
+     */
+    private $artwork;
+
+    public function __construct()
+    {
+        $this->artwork = new ArrayCollection();
+    }
 
     
 
@@ -284,6 +296,36 @@ public function setUser(?User $user): self
     }
 
     $this->user = $user;
+
+    return $this;
+}
+
+/**
+ * @return Collection<int, ArtWork>
+ */
+public function getArtwork(): Collection
+{
+    return $this->artwork;
+}
+
+public function addArtwork(ArtWork $artwork): self
+{
+    if (!$this->artwork->contains($artwork)) {
+        $this->artwork[] = $artwork;
+        $artwork->setArtist($this);
+    }
+
+    return $this;
+}
+
+public function removeArtwork(ArtWork $artwork): self
+{
+    if ($this->artwork->removeElement($artwork)) {
+        // set the owning side to null (unless already changed)
+        if ($artwork->getArtist() === $this) {
+            $artwork->setArtist(null);
+        }
+    }
 
     return $this;
 }

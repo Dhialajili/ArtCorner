@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\StyleRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -26,6 +28,16 @@ class Style
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
+
+    /**
+     * @ORM\OneToMany(targetEntity=ArtWork::class, mappedBy="style")
+     */
+    private $artWorks;
+
+    public function __construct()
+    {
+        $this->artWorks = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -55,4 +67,39 @@ class Style
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, ArtWork>
+     */
+    public function getArtWorks(): Collection
+    {
+        return $this->artWorks;
+    }
+
+    public function addArtWork(ArtWork $artWork): self
+    {
+        if (!$this->artWorks->contains($artWork)) {
+            $this->artWorks[] = $artWork;
+            $artWork->setStyle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArtWork(ArtWork $artWork): self
+    {
+        if ($this->artWorks->removeElement($artWork)) {
+            // set the owning side to null (unless already changed)
+            if ($artWork->getStyle() === $this) {
+                $artWork->setStyle(null);
+            }
+        }
+
+        return $this;
+    }
+    public function __toString()
+    {
+        return $this->name;
+    }
+
 }

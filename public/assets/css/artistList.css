@@ -25,12 +25,13 @@ body {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: -100px;
   position: relative;
-  top: 50px;
+  top: 30px;
+  margin-bottom: 30px;
   margin-left: 50px;
   height: 300px;
 }
 .grid {
-  display: grid;
+  display: inline-block;
 }
 
 .card h5 {
@@ -55,6 +56,9 @@ body {
   left: 150px;
   cursor: pointer;
 }
+.card a {
+  text-decoration: none;
+}
 .arrow {
-  padding-left: 10px;
+  padding-left: 3px;
 }

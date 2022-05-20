@@ -43,6 +43,18 @@
         <li>
           <a href="{{path('app_logout')}}">Se déconnecter</a>
         </li>
+        <div class="dropdown">
+        <li>
+            <img style="width: 60px;
+                        height: 60px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                        margin-left:30px;"
+                        src="/uploads/profiles/{{app.user.artist.profilePicture}} " alt="">
+
+          
+        </div>
+        <li>
       </ul>
       {% endif %}
     </div>
@@ -113,6 +125,8 @@
       </ul>
     </div>  
 
-    </footer>    
+    </footer>   
+      
+   
     </body>
 </html>

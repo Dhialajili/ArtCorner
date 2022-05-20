@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ArtWork{% endblock %}
+
+{% block body %}
+    <h1>ArtWork</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ art_work.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ art_work.Title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ art_work.description }}</td>
+            </tr>
+            <tr>
+                <th>Width</th>
+                <td>{{ art_work.width }}</td>
+            </tr>
+            <tr>
+                <th>Hight</th>
+                <td>{{ art_work.hight }}</td>
+            </tr>
+            <tr>
+                <th>MaterialsUsed</th>
+                <td>{{ art_work.materialsUsed }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ art_work.image }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ art_work.createdAt ? art_work.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ art_work.updatedAt ? art_work.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ art_work.price }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_art_work_index') }}">back to list</a>
+
+    <a href="{{ path('app_art_work_edit', {'id': art_work.id}) }}">edit</a>
+
+    {{ include('art_work/_delete_form.html.twig') }}
+{% endblock %}
