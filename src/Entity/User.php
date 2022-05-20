@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -58,6 +60,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\OneToOne(targetEntity=ProfessionalProfile::class, inversedBy="user", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $professional;
+
+    /**
+     * @ORM\OneToMany(targetEntity=ArtWork::class, mappedBy="user")
+     */
+    private $artWorks;
+
+    public function __construct()
+    {
+        $this->artWorks = new ArrayCollection();
+    }
 
   
 
@@ -212,6 +224,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setProfessional(?ProfessionalProfile $professional): self
     {
         $this->professional = $professional;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ArtWork>
+     */
+    public function getArtWorks(): Collection
+    {
+        return $this->artWorks;
+    }
+
+    public function addArtWork(ArtWork $artWork): self
+    {
+        if (!$this->artWorks->contains($artWork)) {
+            $this->artWorks[] = $artWork;
+            $artWork->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArtWork(ArtWork $artWork): self
+    {
+        if ($this->artWorks->removeElement($artWork)) {
+            // set the owning side to null (unless already changed)
+            if ($artWork->getUser() === $this) {
+                $artWork->setUser(null);
+            }
+        }
 
         return $this;
     }

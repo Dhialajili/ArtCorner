@@ -1,51 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ArtWork index{% endblock %}
+
 
 {% block body %}
-    <h1>ArtWork index</h1>
+   <link rel="stylesheet" href="{{asset('assets/css/title.css')}}"/>
+   <link rel="stylesheet" href="{{asset('assets/css/artwork.css')}}"/> 
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Width</th>
-                <th>Hight</th>
-                <th>MaterialsUsed</th>
-                <th>Image</th>
-                <th>CreatedAt</th>
-                <th>UpdatedAt</th>
-                <th>Price</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    
+    <div class="title">
+        <h2>Art original à acheter en ligne</h2>
+        <p>
+            Découvrez et achetez des œuvres d'art originales faites à la main 
+            directement auprès d'artistes indépendants. 
+            Des peintures à l'huile époustouflantes aux gravures complexes, 
+            des sculptures remarquables à la photographie d'art classique, 
+            faites votre choix et trouvez votre match.
+        </p>
+    </div>
         {% for art_work in art_works %}
-            <tr>
-                <td>{{ art_work.id }}</td>
-                <td>{{ art_work.Title }}</td>
-                <td>{{ art_work.description }}</td>
-                <td>{{ art_work.width }}</td>
-                <td>{{ art_work.hight }}</td>
-                <td>{{ art_work.materialsUsed }}</td>
-                <td>{{ art_work.image }}</td>
-                <td>{{ art_work.createdAt ? art_work.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ art_work.updatedAt ? art_work.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ art_work.price }}</td>
-                <td>
-                    <a href="{{ path('app_art_work_show', {'id': art_work.id}) }}">show</a>
-                    <a href="{{ path('app_art_work_edit', {'id': art_work.id}) }}">edit</a>
-                </td>
-            </tr>
+           
+            <div class="grid">
+            <ul class="card">  
+                <li><img src="/uploads/artworks/{{art_work.image}} " alt=""></li>
+                <li class="info"><h5>{{ art_work.Title }}<h5>
+                    <h5>Ajouté le : {{ art_work.createdAt ? art_work.createdAt|date('Y-m-d') : '' }}</h5>
+                </li>
+                <li><h5 class="price">Prix : {{ art_work.price }} TND<h5></li>
+                
+                
+            </ul>        
+            </div>
         {% else %}
-            <tr>
-                <td colspan="11">no records found</td>
-            </tr>
+            
         {% endfor %}
-        </tbody>
-    </table>
+        
+    
 
-    <a href="{{ path('app_art_work_new') }}">Create new</a>
+    
 {% endblock %}

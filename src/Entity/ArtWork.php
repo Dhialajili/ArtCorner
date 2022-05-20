@@ -97,6 +97,11 @@ class ArtWork
      */
     private $style;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="artWorks")
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -260,6 +265,18 @@ class ArtWork
     public function setStyle(?Style $style): self
     {
         $this->style = $style;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

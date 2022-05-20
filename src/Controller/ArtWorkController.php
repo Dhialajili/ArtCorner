@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Controller;
-
 use App\Entity\ArtWork;
 use App\Form\ArtWorkType;
 use App\Repository\ArtWorkRepository;
@@ -11,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/art/work")
+ * @Route("/artworks")
  */
 class ArtWorkController extends AbstractController
 {
@@ -31,6 +30,8 @@ class ArtWorkController extends AbstractController
     public function new(Request $request, ArtWorkRepository $artWorkRepository): Response
     {
         $artWork = new ArtWork();
+        $artWork->setUser($this->getUser());
+        
         $form = $this->createForm(ArtWorkType::class, $artWork);
         $form->handleRequest($request);
 

@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Artist;
 use App\Entity\ArtWork;
 use App\Entity\Category;
 use App\Entity\Style;
@@ -33,6 +34,7 @@ class ArtWorkType extends AbstractType
                 'choice_label' => 'name',
 
             ))
+
             ->add('subject',EntityType::class,array(
                 'class'=>Subject::class,
                 'choice_label' => 'name',

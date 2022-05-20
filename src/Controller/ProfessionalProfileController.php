@@ -32,7 +32,7 @@ class ProfessionalProfileController extends AbstractController
     public function new(Request $request, ProfessionalProfileRepository $professionalProfileRepository): Response
     {
         $professionalProfile = new ProfessionalProfile();
-        $professionalProfile->setEmail($this->getUser());
+        $professionalProfile->setUser($this->getUser());
         
         $form = $this->createForm(ProfessionalProfileType::class, $professionalProfile);
         $form->handleRequest($request);
