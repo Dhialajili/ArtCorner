@@ -15,6 +15,7 @@
         <li>  <img class="cover"src="/uploads/profiles/{{app.user.artist.coverPicture}} " alt="">  </li>
 
     </ul>
+    <a class="edit" href="{{ path('app_artist_profile_edit', {'username': app.user.artist.username}) }}"><button>Modifier votre profil</button></a>
     <div class="title">
         <h2>À propos de {{ app.user.artist.username }}</h2>
     </div>

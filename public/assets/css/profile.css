@@ -68,3 +68,12 @@ a:hover {
 .bio {
   padding-left: 300px;
 }
+.edit button {
+  color: #fff;
+  background-color: #0d17d9;
+  border: none;
+  position: relative;
+  left: 1200px;
+  height: 40px;
+  font-weight: bold;
+}
