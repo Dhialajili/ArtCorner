@@ -1,41 +1,29 @@
 body {
   background-color: #f5f4f2;
 }
-.card img {
-  width: 240px;
-  height: 180px;
-  position: relative;
-  right: 40px;
+.cover {
+  width: 550px;
+  height: 400px;
+  padding-right: 50px;
 }
 .card {
-  background-color: rgb(255, 255, 255);
-  width: 200px;
-
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-bottom: -100px;
-  position: relative;
-
-  margin-bottom: 30px;
-  margin-left: 50px;
-  height: 300px;
+  display: flex;
+  align-items: flex-start;
+  margin-left: 200px;
+  margin-top: 50px;
 }
-.grid {
-  display: inline-block;
+.card p {
+  max-width: 500px;
+  color: #15212f;
+  text-align: left;
+  font-size: 16px;
 }
-.info {
-  height: 35px;
-}
-.info h5 {
-  color: #b1b1b1;
-  font-size: 14px;
-  margin-bottom: -15px;
-  position: relative;
-  bottom: 15px;
-  right: 30px;
-}
-.price {
+.section2 h5 {
   color: #15212f;
   font-size: 16px;
-  position: relative;
-  right: 30px;
+  font-weight: bold;
+}
+.section1 h5 {
+  color: #15212f;
+  font-size: 16px;
 }

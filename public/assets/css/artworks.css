@@ -1,0 +1,46 @@
+body {
+  background-color: #f5f4f2;
+}
+.cover {
+  width: 240px;
+  height: 180px;
+  position: relative;
+  right: 40px;
+}
+.card {
+  background-color: rgb(255, 255, 255);
+  width: 200px;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: -100px;
+  position: relative;
+
+  margin-bottom: 30px;
+  margin-left: 50px;
+  height: 300px;
+}
+.grid {
+  display: inline-block;
+}
+.info {
+  height: 35px;
+}
+.info h5 {
+  color: #b1b1b1;
+  font-size: 14px;
+  margin-bottom: -15px;
+  position: relative;
+  bottom: 15px;
+  right: 30px;
+}
+.price {
+  color: #15212f;
+  font-size: 16px;
+  position: relative;
+  right: 30px;
+}
+.arrow {
+  position: relative;
+  bottom: 55px;
+  left: 150px;
+}

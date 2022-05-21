@@ -47,7 +47,7 @@ class ArtWorkController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="app_art_work_show", methods={"GET"})
+     * @Route("/{Title}", name="app_art_work_show", methods={"GET"})
      */
     public function show(ArtWork $artWork): Response
     {
@@ -57,7 +57,7 @@ class ArtWorkController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="app_art_work_edit", methods={"GET", "POST"})
+     * @Route("/{Title}/edit", name="app_art_work_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, ArtWork $artWork, ArtWorkRepository $artWorkRepository): Response
     {
@@ -76,7 +76,7 @@ class ArtWorkController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="app_art_work_delete", methods={"POST"})
+     * @Route("/{Title}", name="app_art_work_delete", methods={"POST"})
      */
     public function delete(Request $request, ArtWork $artWork, ArtWorkRepository $artWorkRepository): Response
     {
