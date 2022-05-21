@@ -3,7 +3,16 @@
 
 
 {% block body %}
-<link rel="stylesheet" href="{{asset('assets/css/artwork.css')}}"/>            
+<link rel="stylesheet" href="{{asset('assets/css/title.css')}}"/>
+<link rel="stylesheet" href="{{asset('assets/css/artwork.css')}}"/>     
+ <div class="title">
+        <h2>{{ art_work.Title }}</h2>
+        <h5 style="font-size: 16px;
+   margin-top: -30px;
+  color: #15212f;
+  
+  "> {{ art_work.category }}, {{ art_work.style}}, {{art_work.subject}} </h5>     
+ </div>       
 <div>            
   <ul class="card">
                
@@ -27,7 +36,7 @@
       
   </ul>  
 </div>
-    <a href="{{ path('app_art_work_index') }}">back to list</a>
+    
 
     <a href="{{ path('app_art_work_edit', {'Title': art_work.Title}) }}">edit</a>
 

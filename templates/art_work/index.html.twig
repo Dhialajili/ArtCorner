@@ -9,14 +9,24 @@
     
     <div class="title">
         <h2>Art original à acheter en ligne</h2>
-        <p>
+        <h4 style="font-size: 16px;
+  
+  color: #15212f;
+  margin-top: -30px;
+  ">
             Découvrez et achetez des œuvres d'art originales faites à la main 
             directement auprès d'artistes indépendants. 
             Des peintures à l'huile époustouflantes aux gravures complexes, 
             des sculptures remarquables à la photographie d'art classique, 
             faites votre choix et trouvez votre match.
-        </p>
+        </h4>
     </div>
+    {% for category in categorys %}
+        <ul class="playlist-filter controls">
+					<li class="control" data-filter=".{{ category.name }}">{{ category }}</li>
+					
+				</ul>
+    {% endfor %}
         {% for art_work in art_works %}
            
             <div class="grid">
