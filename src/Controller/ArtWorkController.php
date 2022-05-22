@@ -4,6 +4,7 @@ namespace App\Controller;
 use App\Entity\ArtWork;
 use App\Form\ArtWorkType;
 use App\Repository\ArtWorkRepository;
+use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,6 +24,8 @@ class ArtWorkController extends AbstractController
             'art_works' => $artWorkRepository->findAll(),
         ]);
     }
+
+   
 
     /**
      * @Route("/new", name="app_art_work_new", methods={"GET", "POST"})

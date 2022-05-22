@@ -21,10 +21,35 @@
             faites votre choix et trouvez votre match.
         </h4>
     </div>
-    {% for category in categorys %}
+    {% set newArray = [] %}
+    <h5>Les Catégories disponibles</h5>
+    {% for art_work in art_works %}
+        
         <ul class="playlist-filter controls">
-					<li class="control" data-filter=".{{ category.name }}">{{ category }}</li>
-					
+            {% if art_work.category not in newArray %}
+					<li class="control" data-filter=".{{ art_work.category }}">{{ art_work.category }}</li>
+			{% set newArray = newArray|merge([art_work.category]) %}
+            {% endif %}		
+				</ul>
+    {% endfor %}
+    <h5>Les Sujets disponibles</h5>
+    {% for art_work in art_works %}
+        
+        <ul class="playlist-filter controls">
+            {% if art_work.subject not in newArray %}
+					<li class="control" data-filter=".{{ art_work.subject }}">{{ art_work.subject }}</li>
+			{% set newArray = newArray|merge([art_work.subject]) %}
+            {% endif %}		
+				</ul>
+    {% endfor %}
+    <h5>Les Styles disponibles</h5>
+    {% for art_work in art_works %}
+        
+        <ul class="playlist-filter controls">
+            {% if art_work.style not in newArray %}
+					<li class="control" data-filter=".{{ art_work.style }}">{{ art_work.style }}</li>
+			{% set newArray = newArray|merge([art_work.style]) %}
+            {% endif %}		
 				</ul>
     {% endfor %}
         {% for art_work in art_works %}
