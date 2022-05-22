@@ -44,3 +44,24 @@ body {
   bottom: 55px;
   left: 150px;
 }
+.playlist-filter {
+  text-align: right;
+  padding-top: 20px;
+  margin-bottom: 100px;
+}
+
+.playlist-filter li {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 500;
+  color: #6a7080;
+  padding: 10px 6px 16px;
+  margin-right: 55px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
+
+.playlist-filter li.mixitup-control-active {
+  border-bottom: 2px solid #fc0254;
+}
