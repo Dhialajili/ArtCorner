@@ -76,6 +76,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $received;
 
+    /**
+     * @ORM\OneToOne(targetEntity=ArtLover::class, inversedBy="user", cascade={"persist", "remove"})
+     */
+    private $artlover;
+
     public function __construct()
     {
         $this->artWorks = new ArrayCollection();
@@ -326,6 +331,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $received->setRecipient(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getArtlover(): ?ArtLover
+    {
+        return $this->artlover;
+    }
+
+    public function setArtlover(?ArtLover $artlover): self
+    {
+        $this->artlover = $artlover;
 
         return $this;
     }

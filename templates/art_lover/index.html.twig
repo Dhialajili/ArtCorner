@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ArtLover index{% endblock %}
+
+{% block body %}
+    <h1>ArtLover index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Birthdate</th>
+                <th>ProfilePicture</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for art_lover in art_lovers %}
+            <tr>
+                <td>{{ art_lover.id }}</td>
+                <td>{{ art_lover.username }}</td>
+                <td>{{ art_lover.birthdate ? art_lover.birthdate|date('Y-m-d') : '' }}</td>
+                <td>{{ art_lover.profilePicture }}</td>
+                <td>
+                    <a href="{{ path('app_art_lover_show', {'username': art_lover.username}) }}">show</a>
+                    <a href="{{ path('app_art_lover_edit', {'username': art_lover.username}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_art_lover_new') }}">Create new</a>
+{% endblock %}

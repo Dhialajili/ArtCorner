@@ -11,7 +11,7 @@ body {
 }
 .cover {
   width: 800px;
-
+  object-fit: cover;
   height: 425px;
 }
 

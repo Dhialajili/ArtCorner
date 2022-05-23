@@ -90,11 +90,9 @@ class RegistrationController extends AbstractController
         $this->addFlash('success', 'Your email address has been verified.');
         if ( in_array( 'ROLE_ARTIST', $this->getUser()->getRoles(), true) )
         return $this->redirectToRoute('app_artist_profile_new');
-        if ( in_array( 'ROLE_COLLECTOR', $this->getUser()->getRoles(), true) )
-        return $this->redirectToRoute('app_home');
         if ( in_array('ROLE_PROFESSIONAL', $this->getUser()->getRoles(),true))
         return $this->redirectToRoute('app_professional_profile_new');
         if ( in_array('ROLE_AMATEUR', $this->getUser()->getRoles(),true))
-        return $this->redirectToRoute('app_home');
+        return $this->redirectToRoute('app_art_lover_new');
     }
 }

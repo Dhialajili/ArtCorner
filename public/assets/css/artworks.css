@@ -4,6 +4,7 @@ body {
 .card_cover {
   width: 240px;
   height: 180px;
+  object-fit: cover;
 }
 .grid {
   display: inline-block;

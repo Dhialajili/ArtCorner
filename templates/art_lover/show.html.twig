@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ArtLover{% endblock %}
+
+{% block body %}
+    <link rel="stylesheet" href="{{asset('assets/css/profile.css')}}"/>
+<link rel="stylesheet" href="{{asset('assets/css/title.css')}}"/>
+
+<div>    
+    <ul class="heading" >
+        <li class="info">
+            <img class="photo" src="/uploads/profiles/{{app.user.professional.profilePicture}} " alt="">
+            <h5>Artiste : {{ app.user.art_lover.username }}</h5>
+            <h5>E-mail: {{ app.user.email }}</h5>
+            
+            
+        <li>  <img src="{{asset('assets/images/pro_cover.jpg')}}" alt="">  </li>
+
+    </ul>
+    
+
+    
+{% endblock %}
