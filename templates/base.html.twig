@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="{{asset('assets/css/loader.css')}}"/>
        <link rel="stylesheet" href="{{asset('assets/css/navbar.css')}}"/>
        <link rel="stylesheet" href="{{asset('assets/css/footer.css')}}"/>
+       <link rel="stylesheet" href="{{asset('assets/css/dropdown.css')}}"/>
 
     </head>
     <body>
@@ -41,25 +42,34 @@
         </li>
       </ul>
       {% endif %}
-      {% if  is_granted('IS_AUTHENTICATED_FULLY') %}
+      
       <ul class="sign">
-        <li>
-          <a href="{{path('app_logout')}}">Se déconnecter</a>
-        </li>
-        
-        <li>
-           <a href=" {{path('app_profile')}} "> <img style="width: 60px;
-                        height: 60px;
-                        border-radius: 50%;
-                        object-fit: cover;
-                        margin-left:30px;"
-                        src="/uploads/profiles/{{app.user.artist.profilePicture}} " alt="">
+      {% if is_granted('ROLE_ARTIST') %}
+      <div class="dropdown">
+        <li><img style="width: 60px;height: 60px;border-radius: 50%;object-fit: cover;margin-left:30px;"src="/uploads/profiles/{{app.user.artist.profilePicture}} " alt=""></li>
+      <div class="dropdown-content">
+      
+        <a href=" {{path('app_profile')}} ">Mon profile</a><br>
+        <a href="{{ path('app_artist_profile_edit', {'username': app.user.artist.username}) }}">Editer profil</a>
+        <a href=" {{path('messages')}} ">Messages</a><br>
+        <a href=" {{path('app_logout')}} ">Déconnecter</a>
+      
+      </div>
+</div>
 
-          </a>
-        
-        <li>
-      </ul>
       {% endif %}
+      {% if is_granted('ROLE_PROFESSIONAL') %}
+      <div class="dropdown">
+        <li><img style="width: 60px;height: 60px;border-radius: 50%;object-fit: cover;margin-left:30px;"src="/uploads/profiles/{{app.user.professional.profilePicture}} " alt=""></li>
+      <div class="dropdown-content">
+        <a href=" {{path('app_profile')}} ">Mon profile</a><br>
+        <a href="{{ path('app_professional_profile_edit', {'username': app.user.professional.username}) }}">Editer profile</a><br>
+        <a href=" {{path('messages')}} ">Messages</a><br>
+        <a href=" {{path('app_logout')}} ">Déconnecter</a>
+      </div>
+      {% endif %}
+      </ul>
+      
     </div>
     </header>
 

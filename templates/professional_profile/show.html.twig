@@ -1,39 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ProfessionalProfile{% endblock %}
+
 
 {% block body %}
-    <h1>ProfessionalProfile</h1>
+<link rel="stylesheet" href="{{asset('assets/css/profile.css')}}"/>
+<link rel="stylesheet" href="{{asset('assets/css/title.css')}}"/>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ professional_profile.id }}</td>
-            </tr>
-            <tr>
-                <th>Username</th>
-                <td>{{ professional_profile.username }}</td>
-            </tr>
-            <tr>
-                <th>WorkEstablishment</th>
-                <td>{{ professional_profile.workEstablishment }}</td>
-            </tr>
-            <tr>
-                <th>BirthDate</th>
-                <td>{{ professional_profile.birthDate ? professional_profile.birthDate|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>ProfilePicture</th>
-                <td>{{ professional_profile.profilePicture }}</td>
-            </tr>
-           
-        </tbody>
-    </table>
+<div>    
+    <ul class="heading" >
+        <li class="info">
+            <img class="photo" src="/uploads/profiles/{{app.user.professional.profilePicture}} " alt="">
+            <h5>Artiste : {{ app.user.professional.username }}</h5>
+            <h5>E-mail: {{ app.user.email }}</h5>
+            <h5> {{app.user.professional.workEstablishment}} </h5></li>
+            
+        <li>  <img src="{{asset('assets/images/pro_cover.jpg')}}" alt="">  </li>
 
-    <a href="{{ path('app_professional_profile_index') }}">back to list</a>
-
-    <a href="{{ path('app_professional_profile_edit', {'username': professional_profile.username}) }}">edit</a>
-
+    </ul>
+    <a class="edit" href="{{ path('app_artist_profile_edit', {'username':app.user.professional.username}) }}"><button>Modifier votre profil</button></a>
     
+        
+    
+
+     
+
 {% endblock %}

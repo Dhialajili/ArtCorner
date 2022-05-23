@@ -5,18 +5,19 @@
 {% block body %}
 <link rel="stylesheet" href="{{asset('assets/css/profile.css')}}"/>
 <link rel="stylesheet" href="{{asset('assets/css/title.css')}}"/>
-
+{% if is_granted('ROLE_ARTIST') %}
 <div>    
     <ul class="heading" >
         <li class="info">
             <img class="photo" src="/uploads/profiles/{{app.user.artist.profilePicture}} " alt="">
             <h5>Artiste : {{ app.user.artist.username }}</h5>
-            <h5>E-mail: {{ app.user.email }}</h5></li>
+            <h5>E-mail: {{ app.user.email }}</h5>
+            <h5>Inscrit le : {{ app.user.joinedAt ? app.user.joinedAt|date('Y-m-d') : '' }}</h5></li>
       
         <li>  <img class="cover"src="/uploads/profiles/{{app.user.artist.coverPicture}} " alt="">  </li>
 
     </ul>
-    <a class="edit" href="{{ path('app_artist_profile_edit', {'username': app.user.artist.username}) }}"><button>Modifier votre profil</button></a>
+    
     <div class="title">
         <h2>À propos de {{ app.user.artist.username }}</h2>
     </div>
@@ -62,5 +63,20 @@
             
     {% endfor %}
 </div>   
+{% endif %}
+{% if is_granted('ROLE_PROFESSIONAL') %}
+<div>    
+    <ul class="heading" >
+        <li class="info">
+            <img class="photo" src="/uploads/profiles/{{app.user.professional.profilePicture}} " alt="">
+            <h5>Professionlle : {{ app.user.professional.username }}</h5>
+            <h5>Inscrit le : {{ app.user.joinedAt ? app.user.joinedAt|date('Y-m-d') : '' }}</h5>
+            <h5>E-mail: {{ app.user.email }}</h5>
+            <h5>Établissement de travail : {{app.user.professional.workEstablishment}} </h5></li>
+            
+        <li>  <img  class="cover" src="{{asset('assets/images/pro_cover.jpg')}}" alt="">  </li>
 
+    </ul>
+</div>   
+{% endif %}
 {% endblock %}

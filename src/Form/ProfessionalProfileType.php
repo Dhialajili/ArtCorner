@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Form;
-
+use App\Entity\User;
 use App\Entity\ProfessionalProfile;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

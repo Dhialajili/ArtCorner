@@ -15,29 +15,32 @@
 
 <div class="shop">
     <div class="filters">
-        <h5 style="font-size: 16px;color: #15212f;">Les Catégories disponibles</h5>
+        
+        <h5 style="font-size: 15px;color: #0d17d9;">Les Catégories disponibles</h5>
+        
         {% for art_work in art_works %}
         <ul class="playlist-filter controls">
             {% if art_work.category not in newArray %}
-			<li class="control" data-filter=".{{ art_work.category }}">{{ art_work.category }}</li>
+			<li class="control" data-filter=".{{ art_work.category }}">+ {{ art_work.category }}</li>
 			{% set newArray = newArray|merge([art_work.category]) %}
-            {% endif %}		
+            {% endif %}	
+            	
 		</ul>
         {% endfor %}
-        <h5 style="font-size: 16px;color: #15212f;">Les Sujets disponibles</h5>
+        <h5 style="font-size: 15px;color: #0d17d9;">Les Sujets disponibles</h5>
         {% for art_work in art_works %}
         <ul class="playlist-filter controls">
             {% if art_work.subject not in newArray %}
-			<li class="control" data-filter=".{{ art_work.subject }}">{{ art_work.subject }}</li>
+			<li class="control" data-filter=".{{ art_work.subject }}">+ {{ art_work.subject }}</li>
 			{% set newArray = newArray|merge([art_work.subject]) %}
             {% endif %}		
 		</ul>
         {% endfor %}
-        <h5 style="font-size: 16px;color: #15212f;">Les Styles disponibles</h5>
+        <h5 style="font-size: 15px;color: #0d17d9;">Les Styles disponibles</h5>
         {% for art_work in art_works %}
         <ul class="playlist-filter controls">
             {% if art_work.style not in newArray %}
-			<li class="control" data-filter=".{{ art_work.style }}">{{ art_work.style }}</li>
+			<li class="control" data-filter=".{{ art_work.style }}">+ {{ art_work.style }}</li>
 			{% set newArray = newArray|merge([art_work.style]) %}
             {% endif %}		
 		</ul>
@@ -52,7 +55,7 @@
 			    <div class="row playlist-area">
                 {% for art_work in art_works %}
                     <div class="grid">
-				        <div class="mix col-lg-3 col-md-4 col-sm-6 {{art_work.category}} {{ art_work.style }}">
+				        <div class="mix col-lg-3 col-md-4 col-sm-6 {{art_work.category}} {{ art_work.style }} {{ art_work.subject }}">
                             <div style="background-color: rgb(255, 255, 255);box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);margin-bottom: -100px;margin-bottom: 30px;margin-left: 50px;height: 300px;">
 						        <li><img class="card_cover" src="/uploads/artworks/{{art_work.image}} " alt=""></li>
 						        <li class="info"><h5>{{ art_work.Title }}</h5><h5>Ajouté le : {{ art_work.createdAt ? art_work.createdAt|date('Y-m-d') : '' }}</h5></li>
