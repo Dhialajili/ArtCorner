@@ -3,74 +3,68 @@
 
 
 {% block body %}
-   <link rel="stylesheet" href="{{asset('assets/css/title.css')}}"/>
-   <link rel="stylesheet" href="{{asset('assets/css/artworks.css')}}"/> 
+<link rel="stylesheet" href="{{asset('assets/css/title.css')}}"/>
+<link rel="stylesheet" href="{{asset('assets/css/artworks.css')}}"/> 
 
-    
-    <div class="title">
-        <h2>Art original à acheter en ligne</h2>
-        <h4 style="font-size: 16px;
-  
-  color: #15212f;
-  margin-top: -30px;
-  ">
-            Découvrez et achetez des œuvres d'art originales faites à la main 
-            directement auprès d'artistes indépendants. 
-            Des peintures à l'huile époustouflantes aux gravures complexes, 
-            des sculptures remarquables à la photographie d'art classique, 
-            faites votre choix et trouvez votre match.
-        </h4>
-    </div>
-    {% set newArray = [] %}
-    <h5>Les Catégories disponibles</h5>
-    {% for art_work in art_works %}
-        
+<div class="title">
+    <h2>Art original à acheter en ligne</h2>
+    <h4 style="font-size: 16px;color: #15212f;margin-top: -30px;">Découvrez et achetez des œuvres d'art originales faites à la main directement auprès d'artistes indépendants. Des peintures à l'huile époustouflantes aux gravures complexes, des sculptures remarquables à la photographie d'art classique, faites votre choix et trouvez votre match.</h4>
+</div>
+
+{% set newArray = [] %}
+
+<div class="shop">
+    <div class="filters">
+        <h5 style="font-size: 16px;color: #15212f;">Les Catégories disponibles</h5>
+        {% for art_work in art_works %}
         <ul class="playlist-filter controls">
             {% if art_work.category not in newArray %}
-					<li class="control" data-filter=".{{ art_work.category }}">{{ art_work.category }}</li>
+			<li class="control" data-filter=".{{ art_work.category }}">{{ art_work.category }}</li>
 			{% set newArray = newArray|merge([art_work.category]) %}
             {% endif %}		
-				</ul>
-    {% endfor %}
-    <h5>Les Sujets disponibles</h5>
-    {% for art_work in art_works %}
-        
+		</ul>
+        {% endfor %}
+        <h5 style="font-size: 16px;color: #15212f;">Les Sujets disponibles</h5>
+        {% for art_work in art_works %}
         <ul class="playlist-filter controls">
             {% if art_work.subject not in newArray %}
-					<li class="control" data-filter=".{{ art_work.subject }}">{{ art_work.subject }}</li>
+			<li class="control" data-filter=".{{ art_work.subject }}">{{ art_work.subject }}</li>
 			{% set newArray = newArray|merge([art_work.subject]) %}
             {% endif %}		
-				</ul>
-    {% endfor %}
-    <h5>Les Styles disponibles</h5>
-    {% for art_work in art_works %}
-        
+		</ul>
+        {% endfor %}
+        <h5 style="font-size: 16px;color: #15212f;">Les Styles disponibles</h5>
+        {% for art_work in art_works %}
         <ul class="playlist-filter controls">
             {% if art_work.style not in newArray %}
-					<li class="control" data-filter=".{{ art_work.style }}">{{ art_work.style }}</li>
+			<li class="control" data-filter=".{{ art_work.style }}">{{ art_work.style }}</li>
 			{% set newArray = newArray|merge([art_work.style]) %}
             {% endif %}		
-				</ul>
-    {% endfor %}
-        {% for art_work in art_works %}
-           
-            <div class="grid">
-            <ul class="card">  
-                <li><img class="cover"src="/uploads/artworks/{{art_work.image}} " alt=""></li>
-                <li class="info"><h5>{{ art_work.Title }}<h5>
-                    <h5>Ajouté le : {{ art_work.createdAt ? art_work.createdAt|date('Y-m-d') : '' }}</h5>
-                </li>
-                <li><h5 class="price">Prix : {{ art_work.price }} TND<h5></li>
-                <li class="arrow"><a href="{{ path('app_art_work_show', {'Title': art_work.Title}) }}"><img  src="{{asset('assets/images/Icons/arrowblue.svg')}}" alt=""></a></li>
-                
-                
-            </ul>        
-            </div>
-        {% else %}
-            
+		</ul>
         {% endfor %}
-        
-    
+    </div>
+      
 
-    
+
+    <section class="playlist-section spad">
+	    <div class="container-fluid">
+		    <div class="clearfix"></div>
+			    <div class="row playlist-area">
+                {% for art_work in art_works %}
+                    <div class="grid">
+				        <div class="mix col-lg-3 col-md-4 col-sm-6 {{art_work.category}} {{ art_work.style }}">
+                            <div style="background-color: rgb(255, 255, 255);box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);margin-bottom: -100px;margin-bottom: 30px;margin-left: 50px;height: 300px;">
+						        <li><img class="card_cover" src="/uploads/artworks/{{art_work.image}} " alt=""></li>
+						        <li class="info"><h5>{{ art_work.Title }}</h5><h5>Ajouté le : {{ art_work.createdAt ? art_work.createdAt|date('Y-m-d') : '' }}</h5></li>
+                                <li><h5 class="price">Prix : {{ art_work.price }} TND<h5></li>
+                                <li class="arrow"><a href="{{ path('app_art_work_show', {'Title': art_work.Title}) }}"><img  src="{{asset('assets/images/Icons/arrowblue.svg')}}" alt=""></a></li> 
+					        </div>
+                        </div>
+				    </div>
+                    {% endfor %}
+                </div>
+		    </div>
+	    </div>
+    </section>
+</div>
 {% endblock %}

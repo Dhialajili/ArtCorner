@@ -1,23 +1,9 @@
 body {
   background-color: #f5f4f2;
 }
-.cover {
+.card_cover {
   width: 240px;
   height: 180px;
-  position: relative;
-  right: 40px;
-}
-.card {
-  background-color: rgb(255, 255, 255);
-  width: 200px;
-
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-bottom: -100px;
-  position: relative;
-
-  margin-bottom: 30px;
-  margin-left: 50px;
-  height: 300px;
 }
 .grid {
   display: inline-block;
@@ -31,37 +17,32 @@ body {
   margin-bottom: -15px;
   position: relative;
   bottom: 15px;
-  right: 30px;
+  left: 10px;
 }
 .price {
   color: #15212f;
   font-size: 16px;
   position: relative;
-  right: 30px;
+  left: 30px;
 }
 .arrow {
   position: relative;
   bottom: 55px;
-  left: 150px;
+  left: 190px;
 }
-.playlist-filter {
-  text-align: right;
-  padding-top: 20px;
-  margin-bottom: 100px;
+.shop {
+  display: flex;
+  align-items: flex-start;
 }
 
 .playlist-filter li {
-  display: inline-block;
-  font-size: 15px;
-  font-weight: 500;
-  color: #6a7080;
-  padding: 10px 6px 16px;
-  margin-right: 55px;
-  margin-bottom: 10px;
-  border-bottom: 2px solid transparent;
+  font-size: 16px;
+  font-weight: bold;
+  color: #15212f;
+
   cursor: pointer;
 }
 
 .playlist-filter li.mixitup-control-active {
-  border-bottom: 2px solid #fc0254;
+  border-bottom: 2px solid #0d17d9;
 }
