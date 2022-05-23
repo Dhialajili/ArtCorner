@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Messagerie
+{% endblock %}
+
+{% block body %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"> defer </script>
+
+	<section class="container">
+		<div class="row">
+			<div class="col">
+				<h1>Envoyer un message</h1>
+                {{ form(form) }}
+				<a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+					Voir mes dossiers
+				</a>
+			</div>
+		</div>
+	</section>
+	<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+		<div class="offcanvas-header">
+			<h2 class="offcanvas-title" id="offcanvasExampleLabel">Mes dossiers</h2>
+			<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+		</div>
+		<div class="offcanvas-body">
+            <div class="list-group">
+                <a href="{{ path("messages") }}" class="list-group-item list-group-item-action">Accueil</a>
+            </div>
+            <div class="list-group">
+                <a href="{{ path("messages") }}" class="list-group-item list-group-item-action">Boîte de réception</a>
+            </div>
+            <div class="list-group">
+                <a href="{{ path("messages") }}" class="list-group-item list-group-item-action">Eléments envoyés</a>
+            </div>
+		</div>
+	</div>
+{% endblock %}
