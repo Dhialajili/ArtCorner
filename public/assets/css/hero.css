@@ -1,18 +1,19 @@
-.hero {
+.hero_item1 {
   display: flex;
   align-items: center;
   height: 300px;
   background-image: linear-gradient(274deg, #e4ebf3 0%, #dae3ec 100%);
+  position: relative;
 }
 
-.hero img {
+.hero_item1 img {
   height: 300px;
   padding-left: 200px;
 }
-.hero li {
+.hero_item1 li {
   padding-left: 80px;
 }
-.hero button {
+.hero_item1 button {
   color: #fff;
   background-color: #0d17d9;
   border: none;
@@ -20,7 +21,36 @@
   height: 50px;
   font-weight: bold;
 }
-.hero p {
+.hero_item1 p {
+  color: #15212f;
+  font-size: 20px;
+  width: 550px;
+}
+
+.hero_item2 {
+  display: flex;
+  align-items: center;
+  height: 300px;
+  background-color: #161616;
+}
+
+.hero_item2 img {
+  height: 300px;
+  padding-left: 200px;
+}
+.hero_item2 li {
+  color: #fff;
+  padding-left: 80px;
+}
+.hero_item2 button {
+  color: #fff;
+  background-color: #0d17d9;
+  border: none;
+  width: 97px;
+  height: 50px;
+  font-weight: bold;
+}
+.hero_item2 p {
   font-size: 20px;
   width: 550px;
 }

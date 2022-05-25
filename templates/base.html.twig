@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %}Artistic Corner{% endblock %}</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
     <link rel="stylesheet" href="{{asset('assets/css/loader.css')}}"/>
@@ -17,14 +18,14 @@
   <header>
     <div class="nav-bar">
       <ul>
-        <li><a href="{{path('app_home')}}"><img src="{{asset('assets/images/logo.svg')}}" alt=""></a></li>
+        <li><a href="{{path('app_home')}}"><img style="height: 55px;cursor: pointer;margin-right: 75px;" src="{{asset('assets/images/logo.svg')}}" alt=""></a></li>
         <li><a href=" {{path('app_art_work_index')}} ">Boutique</a></li>
         <li><a href=" {{path('app_artist_profile_index')}} ">Inspiration</a></li>
       </ul>
       {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
       <ul class="sign">
         <li><a href="{{path('app_register')}}">S'inscrire</a></li>
-        <li><h5>Ou</h5></li>
+        
         <li><a href="{{path('app_login')}}">S'identifier</a></li>
       </ul>
       {% endif %}
@@ -33,12 +34,13 @@
       {% if is_granted('ROLE_ARTIST') %}
       <ul class="sign">
         <div class="dropdown">
-          <li><img style="width: 60px;height: 60px;border-radius: 50%;object-fit: cover;margin-left:30px;"src="/uploads/profiles/{{app.user.artist.profilePicture}} " alt=""></li>
+          <img style="width: 60px;height: 60px;border-radius: 50%;object-fit: cover;margin-top:10px;"src="/uploads/profiles/{{app.user.artist.profilePicture}} " alt=""></li>
           <div class="dropdown-content">
-            <a href=" {{path('app_profile')}} ">Mon profile</a><br>
-            <a href="{{ path('app_artist_profile_edit', {'username': app.user.artist.username}) }}">Editer profil</a>
-            <a href=" {{path('messages')}} ">Messages</a><br>
-            <a href=" {{path('app_logout')}} ">Déconnecter</a>
+            <a  style="color:#15212f;" href=" {{path('app_profile')}} "><img src="{{asset('assets/images/Icons/person1.svg')}}" alt="">Mon profile</a><br>
+            <a  style="color:#15212f;" href="{{ path('app_artist_profile_edit', {'username': app.user.artist.username}) }}"><img src="{{asset('assets/images/Icons/manage.svg')}}" alt="">Editer profil</a><br>
+            <a  style="color:#15212f;" href=" {{path('app_art_work_new')}} "><img src="{{asset('assets/images/Icons/image1.svg')}}" alt="">Ajouter un Oeuvre</a><br>
+            <a  style="color:#15212f;" href=" {{path('messages')}} "><img src="{{asset('assets/images/Icons/inbox.svg')}}" alt="">Boîte de réception</a><br>
+            <a  style="color:#15212f;"href=" {{path('app_logout')}} "><img src="{{asset('assets/images/Icons/logout.svg')}}" alt="">Déconnecter</a>
           </div>
         </div>
       </ul>

@@ -82,6 +82,7 @@ a:hover {
   height: 180px;
   position: relative;
   right: 40px;
+  object-fit: cover;
 }
 .card {
   background-color: rgb(255, 255, 255);
@@ -119,4 +120,10 @@ a:hover {
   position: relative;
   bottom: 55px;
   left: 150px;
+}
+.icon {
+  filter: drop-shadow(4px 6px 3px rgba(0, 0, 0, 0.4));
+  position: relative;
+  bottom: 350px;
+  left: 170px;
 }

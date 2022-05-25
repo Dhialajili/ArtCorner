@@ -3,81 +3,61 @@
 {% block title %}Artistic Corner{% endblock %}
 
 {% block body %}
+
 <link rel="stylesheet" href="{{asset('assets/css/hero.css')}}"/>
 <link rel="stylesheet" href="{{asset('assets/css/feature.css')}}"/>
 <link rel="stylesheet" href="{{asset('assets/css/heading.css')}}"/>
 <link rel="stylesheet" href="{{asset('assets/css/comissions.css')}}"/>
-<div class="hero">
-          <ul >
-            <li>
-              <h1>Portraits parfaits</h1>
-            </li>
-            <li>
-              <p>
-                Qu'y a-t-il dans un visage ? Choisissez parmi le meilleur du
-                portrait.
-              </p>
-            </li>
-            <li>
-              <a href="#">
-                <button>Achetez</button>
-              </a>
-            </li>
-          </ul>
-          <img src="{{asset('assets/images/HomeSlide1.jpg')}}" alt="">
-        </div>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"> defer </script>
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
 
-        <div class="feature">
-      <ul>
-        <li class="icon">
-          <img src="{{asset('assets/images/Icons/image.svg')}}" alt="">
-        </li>
-        <li>
-          <p>Art authentique et artisanal</p>
-        </li>
-        <li>
-          <p>
-            Achetez des œuvres d'art originales, uniques et abordables de
-            milliers d'artistes autour du monde.
-          </p>
-        </li>
-      </ul>
-      <ul>
-        <li class="icon">
-          <img src="{{asset('assets/images/Icons/person.svg')}}" alt="">
-        </li>
-        <li>
-          <p>Soutenez les artistes indépendants</p>
-        </li>
-        <li>
-          <p>
-            Achetez directement auprès d'un artiste, en l'aidant à gagnent leur
-            vie en faisant ce qu'ils aiment.
-          </p>
-        </li>
-      </ul>
-      <ul>
-        <li class="icon">
-          <img src="{{asset('assets/images/Icons/shipping.svg')}}" alt="">
-        </li>
-        <li>
-          <p>Achats sans risque</p>
-        </li>
-        <li>
-          <p>
-            Transactions sécurisées, retours gratuits sous 14 jours. Complet
-            tranquillité d'esprit garantie.
-          </p>
-        </li>
-      </ul>
-    </div>
 
-     <div class="heading">
-      <h2>
-        Achetez des œuvres d'art originales d'indépendants artistes du monde
-        entier.
-      </h2>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="hero_item1">
+        <ul >
+          <li><h1>Portraits parfaits</h1></li>
+          <li><p>Qu'y a-t-il dans un visage ? Choisissez parmi le meilleur du portrait.</p></li>
+          <li><a href="#"><button>Achetez</button></a></li>
+        </ul>
+        <img src="{{asset('assets/images/HomeSlide1.jpg')}}" alt="">
+      </div>
     </div>
+    <div class="carousel-item">
+      <div class="hero_item2" style="backgroundColor: #ffffff">
+        <ul style="backgroundColor: #ffffff" >
+          <li><h1>Sculptures<h1></li>
+          <li><p>Vous voulez quelque chose d'un peu différent ? Démarquez-vous avec une sculpture originale faite à la main.</p></li>
+          <li><a href="#"><button>Achetez</button></a></li>
+        </ul>
+        <img src="{{asset('assets/images/HomeSlide2.jpg')}}" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="feature">
+  <ul>
+    <li class="icon"><img src="{{asset('assets/images/Icons/image.svg')}}" alt=""></li>
+    <li><p>Art authentique et artisanal</p></li>
+    <li><p>Achetez des œuvres d'art originales, uniques et abordables de milliers d'artistes autour du monde.</p></li>
+  </ul>
+  <ul>
+    <li class="icon"><img src="{{asset('assets/images/Icons/person.svg')}}" alt=""></li>
+    <li><p>Soutenez les artistes indépendants</p></li>
+    <li>
+    <p>Achetez directement auprès d'un artiste, en l'aidant à gagnent leur vie en faisant ce qu'ils aiment.</p></li>
+  </ul>
+  <ul>
+    <li class="icon"><img src="{{asset('assets/images/Icons/shipping.svg')}}" alt=""></li>
+    <li><p>Achats sans risque</p></li>
+    <li><p>Transactions sécurisées, retours gratuits sous 14 jours. Complet tranquillité d'esprit garantie.</p></li>
+  </ul>
+</div>
+
+<div class="heading">
+  <h2>Achetez des œuvres d'art originales d'indépendants artistes du monde entier.</h2>
+</div>
      
 
         <div class="comission">

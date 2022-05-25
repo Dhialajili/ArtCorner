@@ -40,6 +40,6 @@
   bottom: 25px;
 }
 .comission img {
-  padding-left: 155px;
-  padding-top: 155px;
+  padding-left: 155px !important;
+  padding-top: 155px !important;
 }

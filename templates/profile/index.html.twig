@@ -6,13 +6,20 @@
 <link rel="stylesheet" href="{{asset('assets/css/profile.css')}}"/>
 <link rel="stylesheet" href="{{asset('assets/css/title.css')}}"/>
 {% if is_granted('ROLE_ARTIST') %}
-<div>    
+<div>
+    {% set artwork_number =0 %}
+    {% for art_work in art_works %}
+         {% if art_work.user.artist.username == app.user.artist.username %} 
+            {% set artwork_number = artwork_number + 1  %}
+         {% endif %}
+    {% endfor %}     
     <ul class="heading" >
         <li class="info">
             <img class="photo" src="/uploads/profiles/{{app.user.artist.profilePicture}} " alt="">
             <h5>Artiste : {{ app.user.artist.username }}</h5>
             <h5>E-mail: {{ app.user.email }}</h5>
-            <h5>Inscrit le : {{ app.user.joinedAt ? app.user.joinedAt|date('Y-m-d') : '' }}</h5></li>
+            <h5>Inscrit le : {{ app.user.joinedAt ? app.user.joinedAt|date('Y-m-d') : '' }}</h5>
+            <h5>Nombre d'oeuvres : {{artwork_number}}</h5></li>
       
         <li>  <img class="cover"src="/uploads/profiles/{{app.user.artist.coverPicture}} " alt="">  </li>
 
@@ -44,16 +51,23 @@
     <div class="title">
         <h2>Les oeuvres de {{ app.user.artist.username }}</h2>
     </div>
+    
     {% for art_work in art_works %}
-         {% if art_work.user.artist.username == app.user.artist.username %}  
+         {% if art_work.user.artist.username == app.user.artist.username %} 
+         
             <div class="grid">
             <ul class="card">  
                 <li><img class="artwork_cover" src="/uploads/artworks/{{art_work.image}} " alt=""></li>
+                
+               
                 <li class="artwork_info"><h5>{{ art_work.Title }}<h5>
                     <h5>Ajouté le : {{ art_work.createdAt ? art_work.createdAt|date('Y-m-d') : '' }}</h5>
                 </li>
                 <li><h5 class="price">Prix : {{ art_work.price }} TND<h5></li>
                 <li class="arrow"><a href="{{ path('app_art_work_show', {'Title': art_work.Title}) }}"><img  src="{{asset('assets/images/Icons/arrowblue.svg')}}" alt=""></a></li>
+                 <li><a href="{{ path('app_art_work_edit', {'Title': art_work.Title}) }}"><img  class="icon" src="{{asset('assets/images/Icons/edit.svg')}}" alt=""></a><li>
+                 
+
                 
                 
             </ul>        

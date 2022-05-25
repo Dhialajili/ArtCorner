@@ -5,6 +5,7 @@ body {
   width: 550px;
   height: 400px;
   padding-right: 50px;
+  object-fit: cover;
 }
 .card {
   display: flex;

@@ -27,8 +27,8 @@
     <h5>{{ art_work.Title }}</h5>
     <p>Catégorie : {{ art_work.category }}</p>
     <h5>Faite par : {{ art_work.user.artist.username }}</h5>
-    <h5>Prix : {{ art_work.price }}</h5>
-    <p>Dimensions : {{ art_work.width }} x  {{ art_work.hight }} cm</p> 
+    <h5>Prix : {{ art_work.price }} TND</h5>
+    <p>Dimensions : {{ art_work.width }} x {{ art_work.hight }} cm</p> 
     <p>Style : {{ art_work.style }}</p>
     <p>Sujet : {{ art_work.subject }}</p>      
     <p>Ajoutée le : {{ art_work.createdAt ? art_work.createdAt|date('Y-m-d') : '' }}</p>
