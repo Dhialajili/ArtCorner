@@ -91,6 +91,9 @@
         <li>  <img  class="cover" src="{{asset('assets/images/pro_cover.jpg')}}" alt="">  </li>
 
     </ul>
+    <div class="title">
+        <h2>Commissions ajoutée par {{ app.user.professional.username}}</h2>
+    </div>
 </div>   
 {% endif %}
 {% if is_granted('ROLE_AMATEUR') %}

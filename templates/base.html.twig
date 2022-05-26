@@ -4,72 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %}Artistic Corner{% endblock %}</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    <link href="{{asset('assets/images/Blue_Circle.png')}}" rel="shortcut icon"/>
     <link rel="stylesheet" href="{{asset('assets/css/loader.css')}}"/>
     <link rel="stylesheet" href="{{asset('assets/css/navbar.css')}}"/>
     <link rel="stylesheet" href="{{asset('assets/css/footer.css')}}"/>
     <link rel="stylesheet" href="{{asset('assets/css/dropdown.css')}}"/>
   </head>
 
-<body>
-  <div id="preloder">
-		<div class="loader"></div>
-	</div>
+  <body>
+    <div id="preloder">
+		  <div class="loader"></div>
+	  </div>
   <header>
     <div class="nav-bar">
       <ul>
         <li><a href="{{path('app_home')}}"><img style="height: 55px;cursor: pointer;margin-right: 75px;" src="{{asset('assets/images/logo.svg')}}" alt=""></a></li>
-        <li><a href=" {{path('app_art_work_index')}} ">Boutique</a></li>
-        <li><a href=" {{path('app_artist_profile_index')}} ">Inspiration</a></li>
+        <li><a href=" {{path('app_art_work_index')}} ">Oeuvres d'Art</a></li>
+        <li><a href=" {{path('app_artist_profile_index')}} ">Artistes</a></li>
+        <li><a href=" {{path('app_comission_index')}} ">Commissions</a></li>
       </ul>
       {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-      <ul class="sign">
-        <li><a href="{{path('app_register')}}">S'inscrire</a></li>
-        
-        <li><a href="{{path('app_login')}}">S'identifier</a></li>
-      </ul>
+        <ul class="sign">
+          <li><a href="{{path('app_register')}}">S'inscrire</a></li>
+          <li><a href="{{path('app_login')}}">S'identifier</a></li>
+        </ul>
       {% endif %}
-
-    
+      <!--The User is logged in as artist with the role artist-->
       {% if is_granted('ROLE_ARTIST') %}
+        <ul class="sign">
+          <div class="dropdown">
+            <img style="width: 60px;height: 60px;border-radius: 50%;object-fit: cover;margin-top:20px;"src="/uploads/profiles/{{app.user.artist.profilePicture}} " alt=""></li>
+            <div class="dropdown-content">
+              <a  style="color:#15212f;" href=" {{path('app_profile')}} "><img src="{{asset('assets/images/Icons/person1.svg')}}" alt="">Mon profil</a><br>
+              <a  style="color:#15212f;" href="{{ path('app_artist_profile_edit', {'username': app.user.artist.username}) }}"><img src="{{asset('assets/images/Icons/manage.svg')}}" alt="">Editer profil</a><br>
+              <a  style="color:#15212f;" href=" {{path('app_art_work_new')}} "><img src="{{asset('assets/images/Icons/image1.svg')}}" alt="">Ajouter un Oeuvre</a><br>
+              <a  style="color:#15212f;" href=" {{path('messages')}} "><img src="{{asset('assets/images/Icons/inbox.svg')}}" alt="">Boîte de réception</a><br>
+              <a  style="color:#15212f;"href=" {{path('app_logout')}} "><img src="{{asset('assets/images/Icons/logout.svg')}}" alt="">Déconnecter</a>
+            </div>
+          </div>
+        </ul>
+      {% endif %}
+      <!--The User is logged in as art lover with the role amateur-->
+      {% if is_granted('ROLE_AMATEUR') %}
       <ul class="sign">
         <div class="dropdown">
-          <img style="width: 60px;height: 60px;border-radius: 50%;object-fit: cover;margin-top:10px;"src="/uploads/profiles/{{app.user.artist.profilePicture}} " alt=""></li>
+          <li><img style="width: 60px;height: 60px;border-radius: 50%;object-fit: cover;margin-top:20px;"src="/uploads/profiles/{{app.user.artlover.profilePicture}} " alt=""></li>
           <div class="dropdown-content">
-            <a  style="color:#15212f;" href=" {{path('app_profile')}} "><img src="{{asset('assets/images/Icons/person1.svg')}}" alt="">Mon profile</a><br>
-            <a  style="color:#15212f;" href="{{ path('app_artist_profile_edit', {'username': app.user.artist.username}) }}"><img src="{{asset('assets/images/Icons/manage.svg')}}" alt="">Editer profil</a><br>
-            <a  style="color:#15212f;" href=" {{path('app_art_work_new')}} "><img src="{{asset('assets/images/Icons/image1.svg')}}" alt="">Ajouter un Oeuvre</a><br>
+            <a  style="color:#15212f;" href=" {{path('app_profile')}} "><img src="{{asset('assets/images/Icons/person1.svg')}}" alt="">Mon profil</a><br>
+            <a  style="color:#15212f;" href="{{ path('app_art_lover_edit', {'username': app.user.artlover.username}) }}"><img src="{{asset('assets/images/Icons/manage.svg')}}" alt="">Editer profil</a><br>
             <a  style="color:#15212f;" href=" {{path('messages')}} "><img src="{{asset('assets/images/Icons/inbox.svg')}}" alt="">Boîte de réception</a><br>
             <a  style="color:#15212f;"href=" {{path('app_logout')}} "><img src="{{asset('assets/images/Icons/logout.svg')}}" alt="">Déconnecter</a>
           </div>
         </div>
       </ul>
       {% endif %}
-      {% if is_granted('ROLE_AMATEUR') %}
-      <ul class="sign">
-        <div class="dropdown">
-          <li><img style="width: 60px;height: 60px;border-radius: 50%;object-fit: cover;margin-left:30px;"src="/uploads/profiles/{{app.user.artlover.profilePicture}} " alt=""></li>
-          <div class="dropdown-content">
-            <a href=" {{path('app_profile')}} ">Mon profile</a><br>
-            <a href="{{ path('app_art_lover_edit', {'username': app.user.artlover.username}) }}">Editer profil</a>
-            <a href=" {{path('messages')}} ">Messages</a><br>
-            <a href=" {{path('app_logout')}} ">Déconnecter</a>
-          </div>
-        </div>
-      </ul>
-      {% endif %}
+      <!--The User is logged in as professional with the role professional-->
       {% if is_granted('ROLE_PROFESSIONAL') %}
-      <ul class="sign">
-        <div class="dropdown">
-          <li><img style="width: 60px;height: 60px;border-radius: 50%;object-fit: cover;margin-left:30px;"src="/uploads/profiles/{{app.user.professional.profilePicture}} " alt=""></li>
-          <div class="dropdown-content">
-            <a href=" {{path('app_profile')}} ">Mon profile</a><br>
-            <a href="{{ path('app_professional_profile_edit', {'username': app.user.professional.username}) }}">Editer profile</a><br>
-            <a href=" {{path('messages')}} ">Messages</a><br>
-            <a href=" {{path('app_logout')}} ">Déconnecter</a>
+        <ul class="sign">
+          <div class="dropdown">
+            <li><img style="width: 60px;height: 60px;border-radius: 50%;object-fit: cover;margin-left:30px;"src="/uploads/profiles/{{app.user.professional.profilePicture}} " alt=""></li>
+            <div class="dropdown-content">
+              <a  style="color:#15212f;" href=" {{path('app_profile')}} "><img src="{{asset('assets/images/Icons/person1.svg')}}" alt="">Mon profile</a><br>
+              <a  style="color:#15212f;" href="{{ path('app_professional_profile_edit', {'username': app.user.professional.username}) }}"><img src="{{asset('assets/images/Icons/manage.svg')}}" alt="">Editer profil</a><br>
+              <a  style="color:#15212f;" href=" {{path('app_comission_new')}} "><img src="{{asset('assets/images/Icons/image1.svg')}}" alt="">Ajouter une Comission</a><br>
+              <a  style="color:#15212f;" href=" {{path('messages')}} "><img src="{{asset('assets/images/Icons/inbox.svg')}}" alt="">Boîte de réception</a><br>
+              <a  style="color:#15212f;"href=" {{path('app_logout')}} "><img src="{{asset('assets/images/Icons/logout.svg')}}" alt="">Déconnecter</a>
+            </div>
           </div>
-        </div>
-      </ul>
+        </ul>
       {% endif %}
     
     </div>
@@ -78,77 +80,43 @@
     {% block body %}{% endblock %}
 
     <footer>
-        <div class="footer">
-      <ul>
-        <li>
-          <h5>À propos artistic corner</h5>
-        </li>
-        <li>
-          <p>Nous contacter</p>
-        </li>
-        <li>
-          <p>Commande et paiement</p>
-        </li>
-      </ul>
-      <ul>
-        <li>
-          <h5>Pour les acheteurs</h5>
-        </li>
-        <li>
-          <p>Achats personnels</p>
-        </li>
-        <li>
-          <p>Commandez une œuvre</p>
-        </li>
-        <li>
-          <p>Trouver un cadeau</p>
-        </li>
-      </ul>
-      <ul>
-        <li>
-          <h5>Pour les artistes</h5>
-        </li>
-        <li>
-          <p>Pourquoi vendre ici ?</p>
-        </li>
-        <li>
-          <p>Termes et conditions</p>
-        </li>
-        <li>
-          <p>Comment vendre de l'art en ligne ?</p>
-        </li>
-      </ul>
-      <ul>
-        <li>
-          <h5>Oeuvres</h5>
-        </li>
-        <li>
-          <p>Photographie d'art</p>
-        </li>
-        <li>
-          <p>Impressions artistiques</p>
-        </li>
-        <li>
-          <p>Sculptures</p>
-        </li>
-        <li>
-          <p>Drawings</p>
-        </li>
-        <li>
-          <p>Illustrations</p>
-        </li>
-      </ul>
-    </div>  
+      <div class="footer">
+        <ul>
+          <li><h5>À propos artistic corner</h5></li>
+          <li><p>Nous contacter</p></li>
+          <li><p>Commande et paiement</p></li>
+        </ul>
+        <ul>
+          <li><h5>Pour les acheteurs</h5></li>
+          <li><p>Achats personnels</p></li>
+          <li><p>Commandez une œuvre</p></li>
+          <li><p>Trouver un cadeau</p></li>
+        </ul>
+        <ul>
+          <li><h5>Pour les artistes</h5></li>
+          <li><p>Pourquoi vendre ici ?</p></li>
+          <li><p>Termes et conditions</p></li>
+          <li><p>Comment vendre de l'art en ligne ?</p></li>
+        </ul>
+        <ul>
+          <li><h5>Oeuvres</h5></li>
+          <li><p>Photographie d'art</p></li>
+          <li><p>Impressions artistiques</p></li>
+          <li><p>Sculptures</p></li>
+          <li><p>Drawings</p></li>
+          <li><p>Illustrations</p></li>
+        </ul>
+      </div>  
 
     </footer>   
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-       <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
-	<script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-	<script src="{{asset('assets/js/jquery.slicknav.min.js')}}"></script>
-	<script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
-	<script src="{{asset('assets/js/mixitup.min.js')}}"></script>
-      <script src="{{asset('assets/js/main.js')}}"></script>
-      <script src="{{asset('assets/js/jquery-3.2.1.min.js')}}"></script>
-    </body>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
+	  <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+	  <script src="{{asset('assets/js/jquery.slicknav.min.js')}}"></script>
+	  <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
+	  <script src="{{asset('assets/js/mixitup.min.js')}}"></script>
+    <script src="{{asset('assets/js/main.js')}}"></script>
+    <script src="{{asset('assets/js/jquery-3.2.1.min.js')}}"></script>
+  </body>
 </html>

@@ -5,6 +5,7 @@ use App\Entity\User;
 use App\Entity\Artist;
 use App\Form\ArtistType;
 use App\Repository\ArtistRepository;
+use App\Repository\ArtWorkRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,6 +23,7 @@ class ArtistProfileController extends AbstractController
     {
         return $this->render('artist_profile/index.html.twig', [
             'artists' => $artistRepository->findAll(),
+            
         ]);
     }
 
@@ -50,10 +52,11 @@ class ArtistProfileController extends AbstractController
     /**
      * @Route("/{username}", name="app_artist_profile_show", methods={"GET"})
      */
-    public function show(Artist $artist): Response
+    public function show(Artist $artist , ArtWorkRepository $artWorkRepository): Response
     {
         return $this->render('artist_profile/show.html.twig', [
             'artist' => $artist,
+            'art_works' => $artWorkRepository->findAll(),
         ]);
     }
 

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Comission index{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{{asset('assets/css/artworks.css')}}"/> 
+<link rel="stylesheet" href="{{asset('assets/css/title.css')}}"/>
+
+<div class="title">
+    <h2>Commissions</h2>
+    <h4 style="font-size: 16px;color: #15212f;margin-top: -30px;">Aux artistes pour trouver leurs clients et aux professionnels d'ajouter leurs commissions.</h4>
+</div>
+
+{% for comission in comissions %}
+    <div class="grid">
+		
+            <div style="background-color: rgb(255, 255, 255);box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);margin-bottom: -100px;margin-bottom: 30px;margin-left: 80px;height: 300px;">
+					<li><img class="card_cover" src="/uploads/artworks/{{comission.image}} " alt=""></li>
+			        <li class="info"><h5>{{ comission.Title }}</h5><h5>Ajoutée par : <a href="{{ path('app_professional_profile_show', {'username': comission.user.professional.username}) }}">{{comission.user.professional.username}}</a></h5></li>
+                    <li><h5 class="price">Budget : {{ comission.budget }} TND<h5></li>
+                    <li class="arrow"><a href="{{ path('app_comission_show', {'Title': comission.Title}) }}"><img  src="{{asset('assets/images/Icons/arrowblue.svg')}}" alt=""></a></li> 
+			</div>
+        
+	</div>
+                
+                   
+             
+        {% endfor %}
+
+    
+{% endblock %}

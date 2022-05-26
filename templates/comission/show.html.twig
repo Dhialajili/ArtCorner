@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Comission{% endblock %}
+
+{% block body %}
+    
+
+<link rel="stylesheet" href="{{asset('assets/css/artwork.css')}}"/>
+
+<div>            
+    <ul class="card">
+               
+        <li class="section1"><img class="cover"src="/uploads/artworks/{{comission.image}} " alt=""></li>
+        <li class="section2">
+            <h5>{{ comission.Title }}</h5>
+            <h5>Ajoutée par : <a href="{{ path('app_professional_profile_show', {'username': comission.user.professional.username}) }}">{{comission.user.professional.username}}</a></h5>
+            <h5 class="price">Budget : {{ comission.budget }} TND<h5>
+            <h5>Description : </h5>
+            <p style="max-width:400px">{{ comission.description }}</p> 
+        </li>
+      
+    </ul>  
+</div>
+
+   
+{% endblock %}

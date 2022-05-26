@@ -14,10 +14,10 @@
             <h5>E-mail: {{ app.user.email }}</h5>
             <h5> {{app.user.professional.workEstablishment}} </h5></li>
             
-        <li>  <img src="{{asset('assets/images/pro_cover.jpg')}}" alt="">  </li>
+        <li>  <img class="cover"src="{{asset('assets/images/pro_cover.jpg')}}" alt="">  </li>
 
     </ul>
-    <a class="edit" href="{{ path('app_artist_profile_edit', {'username':app.user.professional.username}) }}"><button>Modifier votre profil</button></a>
+    
     
         
     

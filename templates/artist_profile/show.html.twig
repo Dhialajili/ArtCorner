@@ -5,66 +5,70 @@
 {% block body %}
 <link rel="stylesheet" href="{{asset('assets/css/profile.css')}}"/>
 <link rel="stylesheet" href="{{asset('assets/css/title.css')}}"/>
-<div>    
+<div>
+    {% set artwork_number =0 %}
+    {% for art_work in art_works %}
+        {% if art_work.user.artist.username == artist.username %}
+            {% set artwork_number = artwork_number + 1  %}
+         {% endif %}
+    {% endfor %}   
     <ul class="heading" >
         <li class="info">
             <img class="photo" src="/uploads/profiles/{{artist.profilePicture}} " alt="">
             <h5>Artiste : {{ artist.username }}</h5>
-            <h5>E-mail: {{ artist.user }}</h5></li>
-      
-        <li>  <img class="cover"src="/uploads/profiles/{{artist.coverPicture}} " alt="">  </li>
-
+            <h5>E-mail: {{ artist.user }}</h5>
+            <h5>Inscrit le : {{ artist.user.joinedAt ? artist.user.joinedAt|date('Y-m-d') : '' }}</h5>
+            <h5>Nombre d'oeuvres : {{artwork_number}}</h5></li>
+        </li>
+        <li><img class="cover"src="/uploads/profiles/{{artist.coverPicture}} " alt=""></li>
     </ul>
-    <div class="title">
-        <h2>À propos de {{ artist.username }}</h2>
-    </div>
-        
-    <div class="about">
-        <ul class="links">
-            <li><h5>Links</h5>
-            {% if artist.facebook is not null %}
-            <li><img src="{{asset('assets/images/Icons/facebook.svg')}}" alt=""><a href="{{artist.facebook}}}"target="_blank">Ajoute-moi sur Facebook</a></li>
-            {% endif %}
-            {% if artist.instagram is not null %}
-            <li><img src="{{asset('assets/images/Icons/instagram.svg')}}" alt=""><a href="{{artist.instagram}}}"target="_blank">Suivez-moi sur Instagram</a></li>
-            {% endif %}
-            {% if artist.twitter is not null %}
-            <li><img src="{{asset('assets/images/Icons/twitter.svg')}}" alt=""><a href="{{artist.twitter}}}"target="_blank">Suivez-moi sur Instagram</a></li>
-            {% endif %}
-        </ul>
-        <ul class="bio">
-            <li><h5>Biographie</h5><li>
-            <li><p>{{ artist.Bio }}<p><li>
-        </ul>
-    </div>
 
-    <div class="title">
-        <h2>Les oeuvres de {{ artist.username }}</h2>
-    </div>
-    {% for art_work in art_works %}
-         {% if art_work.user.artist.username == app.user.artist.username %} 
-         
-            <div class="grid">
+<div class="title">
+    <h2>À propos de {{ artist.username }}</h2>
+</div>
+        
+<div class="about">
+    <ul class="links">
+        <li><h5>Links</h5>
+        {% if artist.facebook is not null %}
+            <li><img src="{{asset('assets/images/Icons/facebook.svg')}}" alt=""><a href="{{artist.facebook}}}"target="_blank">Ajoute-moi sur Facebook</a></li>
+        {% endif %}
+        {% if artist.instagram is not null %}
+            <li><img src="{{asset('assets/images/Icons/instagram.svg')}}" alt=""><a href="{{artist.instagram}}}"target="_blank">Suivez-moi sur Instagram</a></li>
+        {% endif %}
+        {% if artist.twitter is not null %}
+            <li><img src="{{asset('assets/images/Icons/twitter.svg')}}" alt=""><a href="{{artist.twitter}}}"target="_blank">Suivez-moi sur Instagram</a></li>
+        {% endif %}
+    </ul>
+    <ul class="bio">
+        <li><h5>Biographie</h5><li>
+        <li><p>{{ artist.Bio }}<p><li>
+    </ul>
+</div>
+
+<div class="title">
+    <h2>Les oeuvres de {{ artist.username }}</h2>
+</div>
+
+{% for art_work in art_works %}
+    {% if art_work.user.artist.username == artist.username %} 
+        <div class="grid">
             <ul class="card">  
                 <li><img class="artwork_cover" src="/uploads/artworks/{{art_work.image}} " alt=""></li>
-                
-               
-                <li class="artwork_info"><h5>{{ art_work.Title }}<h5>
+                <li class="artwork_info">
+                    <h5>{{ art_work.Title }}<h5>
                     <h5>Ajouté le : {{ art_work.createdAt ? art_work.createdAt|date('Y-m-d') : '' }}</h5>
                 </li>
                 <li><h5 class="price">Prix : {{ art_work.price }} TND<h5></li>
                 <li class="arrow"><a href="{{ path('app_art_work_show', {'Title': art_work.Title}) }}"><img  src="{{asset('assets/images/Icons/arrowblue.svg')}}" alt=""></a></li>
-                 <li><a href="{{ path('app_art_work_edit', {'Title': art_work.Title}) }}"><img  class="icon" src="{{asset('assets/images/Icons/edit.svg')}}" alt=""></a><li>
-                 
-
-                
-                
             </ul>        
-            </div>
-        {% endif %}
-        {% else %}
-            
-    {% endfor %}
+        </div>
+    {% endif %}     
+{% endfor %}
+
+{% if artwork_number ==0 %}
+    <h5>{{artist.username}} n'a pas d'oeuvres actuellement</h5>
+{% endif %} 
 </div>   
 
     

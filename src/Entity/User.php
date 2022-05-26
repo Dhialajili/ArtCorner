@@ -81,11 +81,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $artlover;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Comission::class, mappedBy="user")
+     */
+    private $comission;
+
     public function __construct()
     {
         $this->artWorks = new ArrayCollection();
         $this->sent = new ArrayCollection();
         $this->received = new ArrayCollection();
+        $this->comission = new ArrayCollection();
     }
 
   
@@ -343,6 +349,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setArtlover(?ArtLover $artlover): self
     {
         $this->artlover = $artlover;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Comission>
+     */
+    public function getComission(): Collection
+    {
+        return $this->comission;
+    }
+
+    public function addComission(Comission $comission): self
+    {
+        if (!$this->comission->contains($comission)) {
+            $this->comission[] = $comission;
+            $comission->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComission(Comission $comission): self
+    {
+        if ($this->comission->removeElement($comission)) {
+            // set the owning side to null (unless already changed)
+            if ($comission->getUser() === $this) {
+                $comission->setUser(null);
+            }
+        }
 
         return $this;
     }
