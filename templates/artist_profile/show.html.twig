@@ -18,7 +18,7 @@
             <h5>Artiste : {{ artist.username }}</h5>
             <h5>E-mail: {{ artist.user }}</h5>
             <h5>Inscrit le : {{ artist.user.joinedAt ? artist.user.joinedAt|date('Y-m-d') : '' }}</h5>
-            <h5>Nombre d'oeuvres : {{artwork_number}}</h5></li>
+            <h5>Nombre d'oeuvres : {{artwork_number}}</h5>
         </li>
         <li><img class="cover"src="/uploads/profiles/{{artist.coverPicture}} " alt=""></li>
     </ul>

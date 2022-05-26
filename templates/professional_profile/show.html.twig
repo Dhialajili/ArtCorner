@@ -6,17 +6,50 @@
 <link rel="stylesheet" href="{{asset('assets/css/profile.css')}}"/>
 <link rel="stylesheet" href="{{asset('assets/css/title.css')}}"/>
 
-<div>    
+<div>
+    {% set comission_number =0 %}
+    {% for comission in comissions %}
+        {% if comission.user.professional.username == professional_profile.username %}
+            {% set comission_number = comission_number + 1  %}
+         {% endif %}
+    {% endfor %}
     <ul class="heading" >
         <li class="info">
-            <img class="photo" src="/uploads/profiles/{{app.user.professional.profilePicture}} " alt="">
-            <h5>Artiste : {{ app.user.professional.username }}</h5>
-            <h5>E-mail: {{ app.user.email }}</h5>
-            <h5> {{app.user.professional.workEstablishment}} </h5></li>
+            <img class="photo" src="/uploads/profiles/{{professional_profile.profilePicture}} " alt="">
+            <h5>Professionlle : {{ professional_profile.username }}</h5>
+            <h5>E-mail: {{ professional_profile.user.email }}</h5>
+            <h5> {{professional_profile.workEstablishment}} </h5>
+            <h5>Nombre de commissions : {{comission_number}}</h5></li>
             
         <li>  <img class="cover"src="{{asset('assets/images/pro_cover.jpg')}}" alt="">  </li>
-
+</div>
     </ul>
+    <div class="title">
+        <h2>Les comissions de {{ professional_profile.username }}</h2>
+    </div>
+
+    {% for comission in comissions %}
+    {% if comission.user.professional.username == professional_profile.username %}
+        <div class="grid">
+		
+            <ul class="card">
+					<li><img class="artwork_cover" src="/uploads/artworks/{{comission.image}} " alt=""></li>
+			        <li class="artwork_info"><h5>{{ comission.Title }}</h5><h5>Ajoutée par : <a href="{{ path('app_professional_profile_show', {'username': comission.user.professional.username}) }}">{{comission.user.professional.username}}</a></h5></li>
+                    <li><h5 class="price">Budget : {{ comission.budget }} TND<h5></li>
+                    <li class="arrow"><a href="{{ path('app_comission_show', {'Title': comission.Title}) }}"><img  src="{{asset('assets/images/Icons/arrowblue.svg')}}" alt=""></a></li> 
+			</ul>
+        
+	    </div>
+    {% endif %}
+    {% endfor %}
+</div>               
+                   
+             
+        
+
+    
+
+
     
     
         

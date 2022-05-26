@@ -1,8 +1,7 @@
 <?php
 
 namespace App\Controller;
-use App\Entity\ArtWork;
-use App\Form\ArtWorkType;
+use App\Repository\ComissionRepository;
 use App\Repository\ArtWorkRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,10 +12,11 @@ class ProfileController extends AbstractController
     /**
      * @Route("/profile", name="app_profile")
      */
-    public function index(ArtWorkRepository $artWorkRepository): Response
+    public function index(ArtWorkRepository $artWorkRepository , ComissionRepository $comissionRepository): Response
     {
         return $this->render('profile/index.html.twig', [
             'art_works' => $artWorkRepository->findAll(),
+            'comissions' => $comissionRepository->findAll(),
         ]);
     }
 }

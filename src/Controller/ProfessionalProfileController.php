@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-use App\Entity\User;
+use App\Repository\ComissionRepository;
 use App\Entity\ProfessionalProfile;
 use App\Form\ProfessionalProfileType;
 use App\Repository\ProfessionalProfileRepository;
@@ -19,10 +19,11 @@ class ProfessionalProfileController extends AbstractController
     /**
      * @Route("/", name="app_professional_profile_index", methods={"GET"})
      */
-    public function index(ProfessionalProfileRepository $professionalProfileRepository): Response
+    public function index(ProfessionalProfileRepository $professionalProfileRepository , ComissionRepository $comissionRepository): Response
     {
         return $this->render('professional_profile/index.html.twig', [
             'professional_profiles' => $professionalProfileRepository->findAll(),
+            
         ]);
     }
 
@@ -51,10 +52,11 @@ class ProfessionalProfileController extends AbstractController
     /**
      * @Route("/{username}", name="app_professional_profile_show", methods={"GET"})
      */
-    public function show(ProfessionalProfile $professionalProfile): Response
+    public function show(ProfessionalProfile $professionalProfile , ComissionRepository $comissionRepository): Response
     {
         return $this->render('professional_profile/show.html.twig', [
             'professional_profile' => $professionalProfile,
+            'comissions' => $comissionRepository->findAll(),
         ]);
     }
 
