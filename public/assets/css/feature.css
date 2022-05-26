@@ -10,9 +10,12 @@
   padding-left: 35px;
   color: #15212f;
 }
-.icon img {
+.icons img {
   height: 40px;
   width: 40px;
   filter: invert(11%) sepia(42%) saturate(531%) hue-rotate(171deg)
     brightness(100%) contrast(98%);
+}
+.home_grid {
+  display: inline-flex;
 }

@@ -7,9 +7,7 @@
 <link rel="stylesheet" href="{{asset('assets/css/artwork.css')}}"/>     
  <div class="title">
         <h2>{{ art_work.Title }}</h2>
-        <h5 style="font-size: 16px;
-   margin-top: -30px;
-  color: #15212f;
+        <h5 style="font-size: 16px;margin-top: -30px;color: #15212f;
   
   "> {{ art_work.category }}, {{ art_work.style}}, {{art_work.subject}} </h5>     
  </div>       
@@ -32,6 +30,7 @@
     <p>Style : {{ art_work.style }}</p>
     <p>Sujet : {{ art_work.subject }}</p>      
     <p>Ajoutée le : {{ art_work.createdAt ? art_work.createdAt|date('Y-m-d') : '' }}</p>
+    
    </li>
       
   </ul>  
