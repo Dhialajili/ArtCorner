@@ -23,7 +23,7 @@ class ArtWorkType extends AbstractType
             ->add('width',NumberType::class)
             ->add('hight',NumberType::class)
             ->add('materialsUsed')
-            ->add('imageFile',VichImageType::class)
+            
             
             ->add('price',NumberType::class)
             
@@ -45,6 +45,7 @@ class ArtWorkType extends AbstractType
                 'choice_label' => 'name',
                 'multiple'=>false,
             ))
+            ->add('imageFile',VichImageType::class)
         ;
     }
 

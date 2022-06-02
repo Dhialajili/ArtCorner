@@ -3,7 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Comission;
+use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
@@ -14,8 +16,9 @@ class ComissionType extends AbstractType
         $builder
             ->add('Title')
             ->add('description')
-            ->add('imageFile',VichImageType::class)
-            ->add('budget');
+            ->add('budget')
+            ->add('imageFile',VichImageType::class);
+            
             
     }
 

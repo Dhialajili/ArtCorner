@@ -13,18 +13,18 @@
 
 .comission h2 {
   padding-left: 325px;
+  margin-bottom: 10px;
   font-weight: bold;
   font-size: 40px;
   color: #15212f;
 }
 .comission h5 {
   text-align: center;
-  width: 628px;
+  width: 728px;
   font-size: medium;
-  padding-left: 215px;
-  color: #454a52;
   position: relative;
-  bottom: 20px;
+  left: 150px;
+  color: #454a52;
 }
 .comission button {
   color: #fff;
@@ -36,10 +36,11 @@
   cursor: pointer;
   height: 45px;
   width: 250px;
-  position: relative;
+
   bottom: 25px;
 }
 .comission img {
-  padding-left: 155px;
-  padding-top: 155px;
+  position: relative;
+  top: 78px;
+  left: 247px;
 }

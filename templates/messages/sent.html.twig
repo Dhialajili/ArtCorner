@@ -16,7 +16,7 @@
 					{{ app.user.sent|length }}
 					messages</p>
 			</div>
-			<div class="col-3">De</div>
+			<div class="col-3">A</div>
 			<div class="col-3">Sujet</div>
 			<div class="col-3">Date</div>
 			<div class="col-3">Actions</div>
@@ -26,7 +26,7 @@
 					{% set bold = "fw-bold" %}
 				{% endif %}
 
-				<div class="col-3 {{bold}}">{{ message.sender.email }}</div>
+				<div class="col-3 {{bold}}">{{ message.recipient.email }}</div>
 				<div class="col-3 {{bold}}">
 					<a href="{{ path("read", {id: message.id}) }}">{{ message.title }}</a>
 				</div>
