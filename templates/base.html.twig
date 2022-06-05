@@ -16,24 +16,25 @@
 		  <div class="loader"></div>
 	  </div>
   <header>
-    <div class="nav-bar">
+    <div class="navbarac">
       <ul>
         <li><a href="{{path('app_home')}}"><img style="height: 55px;cursor: pointer;margin-right: 75px;" src="{{asset('assets/images/logo.svg')}}" alt=""></a></li>
         <li><a href=" {{path('app_art_work_index')}} ">Oeuvres d'Art</a></li>
         <li><a href=" {{path('app_artist_profile_index')}} ">Artistes</a></li>
         <li><a href=" {{path('app_comission_index')}} ">Commissions</a></li>
-      </ul>
+        <li><a href=" {{path('app_reservation')}} ">Reservation</a></li>
+      
       {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-        <ul class="sign">
-          <li><a href="{{path('app_register')}}">S'inscrire</a></li>
-          <li><a href="{{path('app_login')}}">S'identifier</a></li>
+        
+          <li><a style="color: #0d17d9;position:relative;left:200px;" href="{{path('app_register')}}">S'inscrire</a></li>
+          <li><a style="color: #0d17d9;position:relative;left:200px;" href="{{path('app_login')}}">S'identifier</a></li>
         </ul>
       {% endif %}
       <!--The User is logged in as artist with the role artist-->
       {% if is_granted('ROLE_ARTIST') %}
         <ul class="sign">
           <div class="dropdown">
-            <img style="width: 60px;height: 60px;border-radius: 50%;object-fit: cover;margin-top:20px;"src="/uploads/profiles/{{app.user.artist.profilePicture}} " alt=""></li>
+            <img style="width: 60px;height: 60px;border-radius: 50%;object-fit: cover;margin-left:200px;"src="/uploads/profiles/{{app.user.artist.profilePicture}} " alt=""></li>
             <div class="dropdown-content">
               <a  style="color:#15212f;" href=" {{path('app_profile')}} "><img src="{{asset('assets/images/Icons/person1.svg')}}" alt="">Mon profil</a><br>
               <a  style="color:#15212f;" href="{{ path('app_artist_profile_edit', {'username': app.user.artist.username}) }}"><img src="{{asset('assets/images/Icons/manage.svg')}}" alt="">Editer profil</a><br>

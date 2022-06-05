@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<link rel="stylesheet" href="{{asset('assets/css/reservation.css')}}"/>
+<link rel="stylesheet" href="{{asset('assets/css/title.css')}}"/>
+{% if is_granted('ROLE_ARTIST') %}
+<div class="background">
+    <div class="title">
+        <h2>Réservation</h2>
+        <h4 style="font-size: 16px;color: #15212f;margin-top: -30px;">Vérifiez l'état de votre réservation ou annulez-la si vous changez d'avis</h4>  
+    </div>
+    <div class="container">
+    {% for reservation in reservations %}
+        <div class="info">
+            <div><img class="cover" src="/uploads/artworks/{{reservation.image}} " alt=""></div>
+            <div>
+                <h5>Titre : {{reservation.name}}</h5>
+                <h5>Prix : {{reservation.price}} TND</h5>
+                <h5 style="color:#0d17d9;">Status : {{reservation.status}}</h5>
+                <a href="{{ path('status',{id: reservation.id, status: 'Accepté'}) }}"><button style="background-color: #0d17d9;color: white;border: none;width: 70px;height:20px;margin-left:10px;position:relative;bottom:7px;">Accepter</button></a>
+                <a href="{{ path('status',{id: reservation.id, status: 'Rejetée'}) }}"><button style="background-color: red;color: white;border: none;width: 70px;height:20px;margin-left:10px;position:relative;bottom:7px;">Rejeter</button></a>
+            </div>
+            
+        </div>
+        
+        {% endfor %}
+      
+</div>       
+        
+         
+    
+{% endif %}
+{% if not is_granted('ROLE_ARTIST') %}
+{% set sume =0 %}
+<div class="background">
+<div class="title">
+        <h2>Réservation</h2>
+        <h4 style="font-size: 16px;color: #15212f;margin-top: -30px;">Vérifiez l'état de votre réservation ou annulez-la si vous changez d'avis</h4>  
+ </div>
+<div class="container">
+    <ul>
+    <li>
+        {% for reservation in reservations %}
+        {% set sume = sume + reservation.price  %}
+        <div class="info">
+            <div><img class="cover" src="/uploads/artworks/{{reservation.image}} " alt=""></div>
+            <div>
+            <h5>Titre : {{reservation.name}}</h5></td>
+            <h5>Prix : {{reservation.price}} TND</h5></td>
+            <h5 style="color:#0d17d9;">Status : {{reservation.status}}</h5></td>
+            <h5><a class="remove" href="{{path('delete',{id: reservation.id})}}" role"button">Annuler</h5></div>
+            
+        </div>
+        
+        {% endfor %}
+    </li>
+    <li><h5 style="text-decoration: underline;margin-left:50px;font-weight: 900;">Prix total : {{sume}} TND</h5> </li>
+    </ul>   
+</div>       
+        
+        
+</div>    
+{% endif %}
+
+
+
+{% endblock %}

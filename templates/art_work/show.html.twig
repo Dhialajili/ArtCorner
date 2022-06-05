@@ -30,7 +30,12 @@
     <p>Style : {{ art_work.style }}</p>
     <p>Sujet : {{ art_work.subject }}</p>      
     <p>Ajoutée le : {{ art_work.createdAt ? art_work.createdAt|date('Y-m-d') : '' }}</p>
-    
+    {% if is_granted('ROLE_PROFESSIONAL') %}
+    <a href="{{path('the_reservation',{id: art_work.id})}}"><button class="reservation">Réserver</button></a>
+    {% endif %}
+    {% if is_granted('ROLE_AMATEUR') %}
+    <a href="{{path('the_reservation',{id: art_work.id})}}"><button class="reservation">Réserver</button></a>
+    {% endif %}
    </li>
       
   </ul>  

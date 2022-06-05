@@ -28,3 +28,10 @@ body {
   color: #15212f;
   font-size: 16px;
 }
+.reservation {
+  background-color: #0d17d9;
+  color: white;
+  border: none;
+  width: 250px;
+  height: 35px;
+}

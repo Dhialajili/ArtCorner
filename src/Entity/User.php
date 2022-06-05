@@ -86,12 +86,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $comission;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="user")
+     */
+    private $reservation;
+
     public function __construct()
     {
         $this->artWorks = new ArrayCollection();
         $this->sent = new ArrayCollection();
         $this->received = new ArrayCollection();
         $this->comission = new ArrayCollection();
+        $this->reservation = new ArrayCollection();
     }
 
   
@@ -377,6 +383,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($comission->getUser() === $this) {
                 $comission->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Reservation>
+     */
+    public function getReservation(): Collection
+    {
+        return $this->reservation;
+    }
+
+    public function addReservation(Reservation $reservation): self
+    {
+        if (!$this->reservation->contains($reservation)) {
+            $this->reservation[] = $reservation;
+            $reservation->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReservation(Reservation $reservation): self
+    {
+        if ($this->reservation->removeElement($reservation)) {
+            // set the owning side to null (unless already changed)
+            if ($reservation->getUser() === $this) {
+                $reservation->setUser(null);
             }
         }
 

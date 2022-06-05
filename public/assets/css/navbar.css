@@ -1,34 +1,27 @@
-.nav-bar {
-  display: flex;
+.navbrac {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   background-color: #f5f4f2;
-  height: 72px;
+  height: 50px;
+  width: 1300px;
 }
 
-.nav-bar ul {
-  padding-left: 40px;
+.navbarac ul {
+  position: relative;
   align-items: center;
   display: flex;
 }
-.nav-bar a {
+.navbarac a {
   color: #15212f;
   font-weight: bold;
   font-size: 16px;
   text-decoration: none;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 20px;
 }
-.nav-bar a:hover {
+.navbarac a:hover {
   color: #0d17d9;
   cursor: pointer;
-}
-
-.sign {
-  margin-left: 300px;
-}
-.sign a {
-  color: #0d17d9;
-
-  text-decoration: none;
 }
 
 .about a {
@@ -39,6 +32,9 @@ li {
   list-style: none;
 }
 .dropdown-content img {
-  width: 36px;
-  height: 36px;
+  width: 30px;
+  height: 30px;
+}
+.dropdown-content {
+  margin-left: 200px;
 }

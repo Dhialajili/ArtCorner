@@ -23,7 +23,7 @@ class ArtistType extends AbstractType
             ->add('instagram')
             ->add('twitter')
             ->add('birthDate')
-            ->add('workStatus')
+            
             
             ->add('profileimageFile',VichImageType::class)
             ->add('coverimageFile', VichImageType::class)
