@@ -36,14 +36,19 @@ class DashboardController extends AbstractDashboardController
     {
         
         yield MenuItem::linktoRoute('Back to the website', 'fas fa-home', 'app_home');
+  
         yield MenuItem::linkToCrud('Users', 'fas fa-list', User::class);
+        yield MenuItem::Section('Profils', 'fa fa-palette');
         yield MenuItem::linkToCrud('Artist','fas fa-list', Artist::class);
         yield MenuItem::linkToCrud('Professional','fas fa-list',ProfessionalProfile::class);
         yield MenuItem::linkToCrud('Amateur','fas fa-list', ArtLover::class);
-        yield MenuItem::linkToCrud('Artwork', 'fas fa-list', ArtWork::class);
-        yield MenuItem::linkToCrud('Category', 'fas fa-list', Category::class);
-        yield MenuItem::linkToCrud('Subject', 'fas fa-list', Subject::class);
-        yield MenuItem::linkToCrud('Style', 'fas fa-list', Style::class);
+        yield MenuItem::Section('Oeuvres', 'fa fa-palette');
+        yield MenuItem::linkToCrud('Artwork', 'fas fa-palette', ArtWork::class);
+        yield MenuItem::Section('Filtres', 'fa fa-palette');
+        yield MenuItem::linkToCrud('Category', 'fas fa-tags', Category::class);
+        yield MenuItem::linkToCrud('Subject', 'fas fa-tags', Subject::class);
+        yield MenuItem::linkToCrud('Style', 'fas fa-tags', Style::class);
+        
         
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }

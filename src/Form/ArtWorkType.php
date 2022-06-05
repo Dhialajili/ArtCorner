@@ -22,6 +22,8 @@ class ArtWorkType extends AbstractType
             ->add('description')
             ->add('width',NumberType::class)
             ->add('hight',NumberType::class)
+            ->add('price',NumberType::class)
+            ->add('description')
             ->add('materialsUsed')
             
             
