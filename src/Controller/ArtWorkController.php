@@ -83,7 +83,7 @@ class ArtWorkController extends AbstractController
      */
     public function delete(Request $request, ArtWork $artWork, ArtWorkRepository $artWorkRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$artWork->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$artWork->getTitle(), $request->request->get('_token'))) {
             $artWorkRepository->remove($artWork);
         }
 

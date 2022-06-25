@@ -35,6 +35,8 @@ li {
   width: 30px;
   height: 30px;
 }
-.dropdown-content {
-  margin-left: 200px;
+
+.dropdown {
+  position: relative;
+  left: 200px;
 }

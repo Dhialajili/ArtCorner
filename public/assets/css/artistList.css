@@ -45,7 +45,7 @@ body {
   color: #fff;
   background-color: #0d17d9;
   border: none;
-  width: 90px;
+
   height: 30px;
   font-weight: bold;
   position: relative;
@@ -53,7 +53,7 @@ body {
   display: flex;
   align-items: center;
   padding-left: 20px;
-  left: 150px;
+  left: 60px;
   cursor: pointer;
 }
 .card a {
