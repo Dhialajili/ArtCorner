@@ -3,7 +3,7 @@
 namespace App\Controller;
 use App\Entity\Messages;
 use App\Form\MessagesType;
-
+use App\Repository\MessagesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -77,14 +77,14 @@ class MessagesController extends AbstractController
     }
 
     /**
-     * @Route("/delete/{id}", name="delete")
+     * @Route("/{id}", name="message_delete", methods={"POST"})
      */
-    public function delete(Messages $message): Response
+    public function delete(Request $request, Messages $message, MessagesRepository $messageRepository): Response
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($message);
-        $em->flush();
+        if ($this->isCsrfTokenValid('delete'.$message->getID(), $request->request->get('_token'))) {
+            $messageRepository->remove($message);
+        }
 
-        return $this->redirectToRoute("received");
+        return $this->redirectToRoute('received', [], Response::HTTP_SEE_OTHER);
     }
 }

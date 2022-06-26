@@ -127,3 +127,14 @@ a:hover {
   bottom: 350px;
   left: 170px;
 }
+.myartworks {
+  width: 1000px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.add {
+  position: relative;
+  left: 500px;
+  top: 50px;
+}

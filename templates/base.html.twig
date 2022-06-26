@@ -27,17 +27,17 @@
           <li><a style="color: #0d17d9;position:relative;left:200px;" href="{{path('app_register')}}">S'inscrire</a></li>
           <li><a style="color: #0d17d9;position:relative;left:200px;" href="{{path('app_login')}}">S'identifier</a></li>
         {% endif %}
-      </ul>
+      
       
       <!--The User is logged in as artist-->
       {% if is_granted('ROLE_ARTIST') %}
         <ul class="sign">
           <div class="dropdown">
-            <img style="width: 60px;height: 60px;border-radius: 50%;object-fit: cover;"src="/uploads/profiles/{{app.user.artist.profilePicture}} " alt=""></li>
+            <li><img style="width: 60px;height: 60px;border-radius: 50%;object-fit: cover;"src="/uploads/profiles/{{app.user.artist.profilePicture}} " alt=""></li>
             <div class="dropdown-content">
               <a  style="color:#15212f;" href=" {{path('app_profile')}} "><img src="{{asset('assets/images/Icons/person1.svg')}}" alt="">Mon profil</a><br>
               <a  style="color:#15212f;" href="{{ path('app_artist_profile_edit', {'username': app.user.artist.username}) }}"><img src="{{asset('assets/images/Icons/manage.svg')}}" alt="">Editer profil</a><br>
-              <a  style="color:#15212f;" href=" {{path('app_art_work_new')}} "><img src="{{asset('assets/images/Icons/image1.svg')}}" alt="">Ajouter un Oeuvre</a><br>
+              <a  style="color:#15212f;" href=" {{path('app_manage_artworks')}} "><img src="{{asset('assets/images/Icons/image1.svg')}}" alt="">Gerer Oeuvre</a><br>
               <a  style="color:#15212f;" href=" {{path('messages')}} "><img src="{{asset('assets/images/Icons/inbox.svg')}}" alt="">Boîte de réception</a><br>
               <a  style="color:#15212f;"href=" {{path('app_logout')}} "><img src="{{asset('assets/images/Icons/logout.svg')}}" alt="">Déconnecter</a>
             </div>
@@ -73,6 +73,7 @@
           </div>
         </ul>
       {% endif %}
+      </ul>
     </div>
   </header>
 
@@ -105,6 +106,7 @@
         <li><p>Drawings</p></li>
         <li><p>Illustrations</p></li>
       </ul>
+      
     </div>  
   </footer>
      
