@@ -19,9 +19,11 @@
             <h5>Artiste : {{ app.user.artist.username }}</h5>
             <h5>E-mail: {{ app.user.email }}</h5>
             <h5>Inscrit le : {{ app.user.joinedAt ? app.user.joinedAt|date('Y-m-d') : '' }}</h5>
-            <h5>Nombre d'oeuvres : {{artwork_number}}</h5></li>
-      
-        <li>  <img class="cover"src="/uploads/profiles/{{app.user.artist.coverPicture}} " alt="">  </li>
+            <h5>Nombre d'oeuvres : {{artwork_number}}</h5>
+            <a  style="color:#15212f;filter: drop-shadow(4px 6px 3px rgba(0, 0, 0, 0.4));position: relative;bottom: 340px;left: 1000px;" href="{{ path('app_artist_profile_edit', {'username': app.user.artist.username}) }}"><img src="{{asset('assets/images/Icons/settings.svg')}}" alt=""></a></li>
+            
+        <li>  <img class="cover"src="/uploads/profiles/{{app.user.artist.coverPicture}} " alt=""> </li>
+        
 
     </ul>
     
@@ -48,45 +50,18 @@
         </ul>
     </div>
 
-    <div class="title">
-        <h2>Les oeuvres de {{ app.user.artist.username }}</h2>
-    </div>
-    
-    {% for art_work in art_works %}
-         {% if art_work.user.artist.username == app.user.artist.username %} 
-         
-            <div class="grid">
-            <ul class="card">  
-                <li><img class="artwork_cover" src="/uploads/artworks/{{art_work.image}} " alt=""></li>
-                
-               
-                <li class="artwork_info"><h5>{{ art_work.Title }}<h5>
-                    <h5>Ajouté le : {{ art_work.createdAt ? art_work.createdAt|date('Y-m-d') : '' }}</h5>
-                </li>
-                <li><h5 class="price">Prix : {{ art_work.price }} TND<h5></li>
-                <li class="arrow"><a href="{{ path('app_art_work_show', {'Title': art_work.Title}) }}"><img  src="{{asset('assets/images/Icons/arrowblue.svg')}}" alt=""></a></li>
-                 <li><a href="{{ path('app_art_work_edit', {'Title': art_work.Title}) }}"><img  class="icon" src="{{asset('assets/images/Icons/edit.svg')}}" alt=""></a><li>
-                 
-
-                
-                
-            </ul>        
-            </div>
-        {% endif %}
-        {% else %}
-            
-    {% endfor %}
-</div>   
+       
 {% endif %}
 {% if is_granted('ROLE_PROFESSIONAL') %}
 <div>    
     <ul class="heading" >
         <li class="info">
             <img class="photo" src="/uploads/profiles/{{app.user.professional.profilePicture}} " alt="">
-            <h5>Professionlle : {{ app.user.professional.username }}</h5>
+            <h5>Professionnel : {{ app.user.professional.username }}</h5>
             <h5>Inscrit le : {{ app.user.joinedAt ? app.user.joinedAt|date('Y-m-d') : '' }}</h5>
             <h5>E-mail: {{ app.user.email }}</h5>
-            <h5>Établissement de travail : {{app.user.professional.workEstablishment}} </h5></li>
+            <h5>Établissement de travail : {{app.user.professional.workEstablishment}} </h5>
+            <a  style="color:#15212f;filter: drop-shadow(4px 6px 3px rgba(0, 0, 0, 0.4));position: relative;bottom: 340px;left: 1000px;" href="{{ path('app_professional_profile_edit', {'username': app.user.professional.username}) }}"><img src="{{asset('assets/images/Icons/settings.svg')}}" alt=""></a></li>
             
         <li>  <img  class="cover" src="{{asset('assets/images/pro_cover.jpg')}}" alt="">  </li>
 
@@ -117,7 +92,8 @@
             <img class="photo" src="/uploads/profiles/{{app.user.artlover.profilePicture}} " alt="">
             <h5>Amateurs d'art : {{ app.user.artlover.username }}</h5>
             <h5>Inscrit le : {{ app.user.joinedAt ? app.user.joinedAt|date('Y-m-d') : '' }}</h5>
-            <h5>E-mail: {{ app.user.email }}</h5>
+           
+            <h5>E-mail: {{ app.user.email }}</h5> <a  style="color:#15212f;filter: drop-shadow(4px 6px 3px rgba(0, 0, 0, 0.4));position: relative;bottom: 340px;left: 1000px;" href="{{ path('app_artlover_profile_edit', {'username': app.user.artlover.username}) }}"><img src="{{asset('assets/images/Icons/settings.svg')}}" alt=""></a></li>
             
             
         <li>  <img  class="cover" src="{{asset('assets/images/artlover_cover.jpg')}}" alt="">  </li>

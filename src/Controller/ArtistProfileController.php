@@ -40,7 +40,7 @@ class ArtistProfileController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $artistRepository->add($artist);
-            return $this->redirectToRoute('app_artist_profile_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_profile', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('artist_profile/new.html.twig', [
@@ -70,7 +70,7 @@ class ArtistProfileController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $artistRepository->add($artist);
-            return $this->redirectToRoute('app_artist_profile_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_profile', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('artist_profile/edit.html.twig', [

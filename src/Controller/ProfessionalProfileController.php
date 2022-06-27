@@ -40,7 +40,7 @@ class ProfessionalProfileController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $professionalProfileRepository->add($professionalProfile);
-            return $this->redirectToRoute('app_professional_profile_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_profile', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('professional_profile/new.html.twig', [
@@ -70,7 +70,7 @@ class ProfessionalProfileController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $professionalProfileRepository->add($professionalProfile);
-            return $this->redirectToRoute('app_professional_profile_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_profile', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('professional_profile/edit.html.twig', [

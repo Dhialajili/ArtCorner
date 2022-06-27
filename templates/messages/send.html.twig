@@ -6,11 +6,14 @@
 {% block body %}
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"> defer </script>
-
+<link rel="stylesheet" href="{{asset('assets/css/title.css')}}"/>
+<div class="title">
+	<h2>Envoyer un message</h2>
+</div>
 	<section class="container">
 		<div class="row">
 			<div class="col">
-				<h1>Envoyer un message</h1>
+				
                 {{ form(form) }}
 				<br>
 				<a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
@@ -27,10 +30,10 @@
 		<div class="offcanvas-body">
             <div class="list-group">
                 <a href="{{ path("messages") }}" class="list-group-item list-group-item-action">Accueil</a>
-            </div>
+            </div><br>
             <div class="list-group">
                 <a href="{{ path("messages") }}" class="list-group-item list-group-item-action">Boîte de réception</a>
-            </div>
+            </div><br>
 			
             <div class="list-group">
                 <a href="{{ path("messages") }}" class="list-group-item list-group-item-action">Eléments envoyés</a>

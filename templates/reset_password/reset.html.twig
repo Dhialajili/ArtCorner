@@ -1,12 +1,15 @@
-{% extends 'base.html.twig' %}
 
-{% block title %}Reset your password{% endblock %}
+
+
 
 {% block body %}
-    <h1>Reset your password</h1>
-
+<link rel="stylesheet" href="{{asset('assets/css/request.css')}}"/>
+<ul class="request">
+   <li> <h1>Réinitialiser mot de passe</h1></li>
+<li>
     {{ form_start(resetForm) }}
         {{ form_row(resetForm.plainPassword) }}
-        <button class="btn btn-primary">Reset password</button>
-    {{ form_end(resetForm) }}
+        <button class="btn btn-primary">Réinitialiser</button>
+    {{ form_end(resetForm) }}</li>
+    </ul>
 {% endblock %}

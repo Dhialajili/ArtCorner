@@ -10,7 +10,8 @@
         <h5 style="font-size: 16px;margin-top: -30px;color: #15212f;
   
   "> {{ art_work.category }}, {{ art_work.style}}, {{art_work.subject}} </h5>     
- </div>       
+ </div> 
+ {% set verification = false %}      
 <div>            
   <ul class="card">
                
@@ -30,12 +31,25 @@
     <p>Style : {{ art_work.style }}</p>
     <p>Sujet : {{ art_work.subject }}</p>      
     <p>Ajoutée le : {{ art_work.createdAt ? art_work.createdAt|date('Y-m-d') : '' }}</p>
-    {% if is_granted('ROLE_PROFESSIONAL') %}
+    {% for reservation in reservations %}
+      {% if art_work.Title == reservation.name %}
+        {% if reservation.status == "Accepté" %}
+          {% set verification = "True" %}
+        {% endif %}
+      {% endif %}
+      {% if verification == "True" %}
+      <h5>Réserver par {{reservation.user.professional.username}}</h5>
+      {% endif %}
+      
+    {% endfor %}
+    {% if verification == "True" %}
+    {% elseif is_granted('ROLE_PROFESSIONAL') %}
     <a href="{{path('the_reservation',{id: art_work.id})}}"><button class="reservation">Réserver</button></a>
+      {% elseif is_granted('ROLE_AMATEUR') %}
+      <a href="{{path('the_reservation',{id: art_work.id})}}"><button class="reservation">Réserver</button></a>
     {% endif %}
-    {% if is_granted('ROLE_AMATEUR') %}
-    <a href="{{path('the_reservation',{id: art_work.id})}}"><button class="reservation">Réserver</button></a>
-    {% endif %}
+      
+    
    </li>
       
   </ul>  

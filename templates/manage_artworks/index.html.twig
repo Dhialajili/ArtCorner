@@ -3,38 +3,68 @@
 {% block body %}
 <link rel="stylesheet" href="{{asset('assets/css/profile.css')}}"/>
 <link rel="stylesheet" href="{{asset('assets/css/title.css')}}"/>
+
+
+{% if is_granted('ROLE_ARTIST') %}
 <div class="title">
-    <h2>Les oeuvres de {{ app.user.artist.username }}</h2>
+    <h2>Gérer votre oeuvres d'art {{ app.user.artist.username }}</h2>
     <a class="add"   style="color:#15212f;" href=" {{path('app_art_work_new')}} "><img src="{{asset('assets/images/Icons/addcircle.svg')}}" alt=""></a>
 </div>
 
- <div class="myartworks"> 
- 
- {% for art_work in art_works %}
-         {% if art_work.user.artist.username == app.user.artist.username %} 
-         
+<div class="myartworks"> 
+{% set artwork_number =0 %}
+    {% for art_work in art_works %}
+        {% if art_work.user.artist.username == app.user.artist.username %}
+        {% set artwork_number = artwork_number + 1  %} 
             <div class="grid">
                 <ul class="card">  
-                <li><img class="artwork_cover" src="/uploads/artworks/{{art_work.image}} " alt=""></li>
-                
-               
-                <li class="artwork_info"><h5>{{ art_work.Title }}<h5>
-                    <h5>Ajouté le : {{ art_work.createdAt ? art_work.createdAt|date('Y-m-d') : '' }}</h5>
-                </li>
-                <li><h5 class="price">Prix : {{ art_work.price }} TND<h5></li>
-                <li class="arrow"><a href="{{ path('app_art_work_show', {'Title': art_work.Title}) }}"><img  src="{{asset('assets/images/Icons/arrowblue.svg')}}" alt=""></a></li>
-                 <li><a href="{{ path('app_art_work_edit', {'Title': art_work.Title}) }}"><img  class="icon" src="{{asset('assets/images/Icons/edit.svg')}}" alt=""></a><li>
-                 
-
-                
-                
+                    <li><img class="artwork_cover" src="/uploads/artworks/{{art_work.image}} " alt=""></li>
+                    <li class="artwork_info"><h5>{{ art_work.Title }}<h5>
+                        <h5>Ajouté le : {{ art_work.createdAt ? art_work.createdAt|date('Y-m-d') : '' }}</h5>
+                    </li>
+                    <li><h5 class="price">Prix : {{ art_work.price }} TND<h5></li>
+                    <li class="arrow"><a href="{{ path('app_art_work_show', {'Title': art_work.Title}) }}"><img  src="{{asset('assets/images/Icons/arrowblue.svg')}}" alt=""></a></li>
+                    <li><a href="{{ path('app_art_work_edit', {'Title': art_work.Title}) }}"><img  class="icon" src="{{asset('assets/images/Icons/edit.svg')}}" alt=""></a><li>
                 </ul>        
-            </div>
-            
+            </div> 
+               
+        {% endif %}
+       
+          
+    {% endfor %}
+    {% if artwork_number ==0 %}
+    <h2 style="text-align:center;margin-top:100px; height:200px;color:#15212f;"> Vous n'avez pas encore ajouté d'œuvres d'art</h2>
+{% endif %} 
+</div>
+{% endif %}
+{% if is_granted('ROLE_PROFESSIONAL') %}
+<div class="title">
+    <h2>Gérer votre commissions</h2>
+    <a class="add"   style="color:#15212f;" href=" {{path('app_comission_new')}} "><img src="{{asset('assets/images/Icons/addcircle.svg')}}" alt=""></a>
+</div>
+<div class="myartworks">
+{% set comission_number =0 %} 
+    {% for comission in comissions %}
+        {% if comission.user.professional.username == app.user.professional.username %}
+        {% set comission_number = comission_number + 1  %}  
+            <div class="grid">
+		
+            <ul class="card">
+					<li><img class="artwork_cover" src="/uploads/artworks/{{comission.image}} " alt=""></li>
+			        <li class="artwork_info"><h5>{{ comission.Title }}</h5><h5>Ajoutée par : <a href="{{ path('app_professional_profile_show', {'username': comission.user.professional.username}) }}">{{comission.user.professional.username}}</a></h5></li>
+                    <li><h5 class="price">Budget : {{ comission.budget }} TND<h5></li>
+                    <li class="arrow"><a href="{{ path('app_comission_show', {'Title': comission.Title}) }}"><img  src="{{asset('assets/images/Icons/arrowblue.svg')}}" alt=""></a></li>
+                    <li><a href="{{ path('app_comission_edit', {'Title': comission.Title}) }}"><img  class="icon" src="{{asset('assets/images/Icons/edit.svg')}}" alt=""></a><li> 
+			</ul class="card">
+        
+	</div>   
         {% endif %}
         {% else %}
-            
+            <h4>Vous n'avez pas encore ajouté une commission</h4>    
     {% endfor %}
-    </div>
-    
+    {% if comission_number ==0 %}
+    <h2 style="text-align:center;margin-top:100px; height:200px;color:#15212f;"> Vous n'avez pas encore ajouté d'œuvres d'art</h2>
+{% endif %}
+</div>
+{% endif %}    
 {% endblock %}

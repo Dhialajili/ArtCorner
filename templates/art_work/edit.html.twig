@@ -4,11 +4,11 @@
 
 {% block body %}
 
-    <h1>Editer l'oeuvre ArtWork</h1>
+    <h1>Editer l'oeuvre</h1>
 
-    {{ include('art_work/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('art_work/_form.html.twig', {'button_label': 'Enregistrer'}) }}
 
-    <a href="{{ path('app_art_work_index') }}">Annuler</a>
+
 
     {{ include('art_work/_delete_form.html.twig') }}
 {% endblock %}

@@ -4,7 +4,7 @@ namespace App\Controller;
 use App\Entity\ArtWork;
 use App\Form\ArtWorkType;
 use App\Repository\ArtWorkRepository;
-use App\Repository\CategoryRepository;
+use App\Repository\ReservationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -40,7 +40,7 @@ class ArtWorkController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $artWorkRepository->add($artWork);
-            return $this->redirectToRoute('app_art_work_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_manage_artworks', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('art_work/new.html.twig', [
@@ -52,10 +52,11 @@ class ArtWorkController extends AbstractController
     /**
      * @Route("/{Title}", name="app_art_work_show", methods={"GET"})
      */
-    public function show(ArtWork $artWork): Response
+    public function show(ArtWork $artWork , ReservationRepository $reservationRepository): Response
     {
         return $this->render('art_work/show.html.twig', [
             'art_work' => $artWork,
+            'reservations' => $reservationRepository->findAll(),
         ]);
     }
 
@@ -69,7 +70,7 @@ class ArtWorkController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $artWorkRepository->add($artWork);
-            return $this->redirectToRoute('app_art_work_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_manage_artworks', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('art_work/edit.html.twig', [
@@ -87,6 +88,6 @@ class ArtWorkController extends AbstractController
             $artWorkRepository->remove($artWork);
         }
 
-        return $this->redirectToRoute('app_art_work_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_manage_artworks', [], Response::HTTP_SEE_OTHER);
     }
 }

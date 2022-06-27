@@ -37,7 +37,7 @@ class ComissionController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $comissionRepository->add($comission);
-            return $this->redirectToRoute('app_comission_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_manage_artworks', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('comission/new.html.twig', [
@@ -66,7 +66,7 @@ class ComissionController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $comissionRepository->add($comission);
-            return $this->redirectToRoute('app_comission_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_manage_artworks', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('comission/edit.html.twig', [
@@ -80,10 +80,10 @@ class ComissionController extends AbstractController
      */
     public function delete(Request $request, Comission $comission, ComissionRepository $comissionRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$comission->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$comission->getTitle(), $request->request->get('_token'))) {
             $comissionRepository->remove($comission);
         }
 
-        return $this->redirectToRoute('app_comission_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_manage_artworks', [], Response::HTTP_SEE_OTHER);
     }
 }

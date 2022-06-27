@@ -37,7 +37,7 @@ class ArtLoverController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $artLoverRepository->add($artLover);
-            return $this->redirectToRoute('app_art_lover_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_profile', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('art_lover/new.html.twig', [
@@ -66,7 +66,7 @@ class ArtLoverController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $artLoverRepository->add($artLover);
-            return $this->redirectToRoute('app_art_lover_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_profile', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('art_lover/edit.html.twig', [
