@@ -75,11 +75,12 @@ class MessagesController extends AbstractController
 
         return $this->render('messages/read.html.twig', compact("message"));
     }
-
+    
+    
     /**
      * @Route("/{id}", name="message_delete", methods={"POST"})
      */
-    public function delete(Request $request, Messages $message, MessagesRepository $messageRepository): Response
+    /*public function delete(Request $request, Messages $message, MessagesRepository $messageRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$message->getID(), $request->request->get('_token'))) {
             $messageRepository->remove($message);
@@ -87,4 +88,6 @@ class MessagesController extends AbstractController
 
         return $this->redirectToRoute('received', [], Response::HTTP_SEE_OTHER);
     }
+    */
+    
 }
